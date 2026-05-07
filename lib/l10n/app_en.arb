@@ -1,0 +1,22 @@
+{
+  "@@locale": "en",
+  "appTitle": "Maktom",
+  "tagline": "Your feelings. Safe. Anonymous. Heard.",
+  "getStarted": "Get Started",
+  "next": "Next",
+  "skip": "Skip",
+  "goodMorning": "Good morning",
+  "goodAfternoon": "Good afternoon",
+  "goodEvening": "Good evening",
+  "friend": "Friend",
+  "moodCheckIn": "How are you feeling today?",
+  "upcomingSession": "Upcoming Session",
+  "joinSession": "Join Session",
+  "needToTalk": "Need to talk?",
+  "seeAll": "See all",
+  "findSupport": "Find Support",
+  "myJournal": "My Journal",
+  "communityCircles": "Community Circles",
+  "crisisSupport": "Talk to someone now",
+  "continueAnyway": "I’m okay, continue"
+}
