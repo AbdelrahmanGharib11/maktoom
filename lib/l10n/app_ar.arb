@@ -1,0 +1,22 @@
+{
+  "@@locale": "ar",
+  "appTitle": "مكتوم",
+  "tagline": "مشاعرك. بأمان. مجهول. مسموع.",
+  "getStarted": "ابدأ الآن",
+  "next": "التالي",
+  "skip": "تخطي",
+  "goodMorning": "صباح الخير",
+  "goodAfternoon": "مساء الخير",
+  "goodEvening": "مساء الخير",
+  "friend": "صديقي",
+  "moodCheckIn": "كيف تشعر اليوم؟",
+  "upcomingSession": "الجلسة القادمة",
+  "joinSession": "انضم للجلسة",
+  "needToTalk": "هل تحتاج للتحدث؟",
+  "seeAll": "عرض الكل",
+  "findSupport": "ابحث عن الدعم",
+  "myJournal": "يومياتي",
+  "communityCircles": "دوائر المجتمع",
+  "crisisSupport": "تحدث مع شخص ما الآن",
+  "continueAnyway": "أنا بخير، استمر"
+}
