@@ -4,8 +4,12 @@ import '../../../../core/theme/app_colors.dart';
 import '../../../../core/theme/app_typography.dart';
 import '../../../../core/utils/responsive_helper.dart';
 
+import '../../data/models/therapist_dto.dart';
+
 class TherapistGridCard extends StatelessWidget {
-  const TherapistGridCard({super.key});
+  final TherapistDTO therapist;
+
+  const TherapistGridCard({super.key, required this.therapist});
 
   @override
   Widget build(BuildContext context) {
@@ -109,7 +113,7 @@ class TherapistGridCard extends StatelessWidget {
                           const Icon(Icons.star, color: AppColors.mutedGold, size: 10),
                           const SizedBox(width: 2),
                           Text(
-                            '4.9',
+                            therapist.rating.toString(),
                             style: AppTypography.bodySmall(context).copyWith(
                               fontSize: 10,
                               fontWeight: FontWeight.bold,
@@ -121,13 +125,13 @@ class TherapistGridCard extends StatelessWidget {
                   ),
                   SizedBox(height: context.h(8)),
                   Text(
-                    'Dr. Sarah Ahmed',
+                    therapist.name,
                     style: AppTypography.bodyMedium(context).copyWith(fontWeight: FontWeight.bold),
                     maxLines: 1,
                     overflow: TextOverflow.ellipsis,
                   ),
                   Text(
-                    'Mental Health Expert',
+                    therapist.specialty,
                     style: AppTypography.bodySmall(context).copyWith(fontSize: 10),
                   ),
                   SizedBox(height: context.h(8)),
@@ -135,7 +139,7 @@ class TherapistGridCard extends StatelessWidget {
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
                       Text(
-                        '\$60/hr',
+                        '\$${therapist.hourlyRate.toInt()}/hr',
                         style: AppTypography.bodySmall(context).copyWith(
                           fontWeight: FontWeight.bold,
                           fontSize: 12,
