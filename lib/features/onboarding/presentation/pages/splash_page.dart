@@ -1,10 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_animate/flutter_animate.dart';
 import 'package:go_router/go_router.dart';
+import 'package:maktoom/features/auth/presentation/cubit/auth_cubit.dart';
 import '../../../../core/theme/app_colors.dart';
 import '../../../../core/theme/app_typography.dart';
 import '../../../../core/utils/l10n_extensions.dart';
 import '../../../../core/utils/responsive_helper.dart';
+import '../../../../injection_container.dart';
 
 class SplashPage extends StatefulWidget {
   const SplashPage({super.key});
@@ -17,11 +19,16 @@ class _SplashPageState extends State<SplashPage> {
   @override
   void initState() {
     super.initState();
-    _navigateToNext();
+    _initializeApp();
   }
 
-  void _navigateToNext() async {
-    await Future.delayed(const Duration(seconds: 3));
+  Future<void> _initializeApp() async {
+    // Check auth status
+    await sl<AuthCubit>().checkAuthStatus();
+
+    // Minimum splash time
+    await Future.delayed(const Duration(seconds: 2));
+
     if (mounted) {
       context.go('/onboarding');
     }
@@ -43,7 +50,7 @@ class _SplashPageState extends State<SplashPage> {
               ),
             ),
           ).animate().fadeIn(duration: 1500.ms),
-          
+
           // Content
           Center(
             child: Column(
@@ -51,28 +58,35 @@ class _SplashPageState extends State<SplashPage> {
               children: [
                 // Logo Placeholder / Text
                 Image.asset(
-                  'assets/images/logo.png',
-                  width: context.w(180),
-                  fit: BoxFit.contain,
-                )
-                .animate()
-                .fadeIn(duration: 800.ms)
-                .scale(begin: const Offset(0.8, 0.8), end: const Offset(1, 1), curve: Curves.easeOutBack),
-                
+                      'assets/images/logo.png',
+                      width: context.w(180),
+                      fit: BoxFit.contain,
+                    )
+                    .animate()
+                    .fadeIn(duration: 800.ms)
+                    .scale(
+                      begin: const Offset(0.8, 0.8),
+                      end: const Offset(1, 1),
+                      curve: Curves.easeOutBack,
+                    ),
+
                 SizedBox(height: context.h(16)),
-                
+
                 Text(
-                  context.l10n.tagline,
-                  textAlign: TextAlign.center,
-                  style: AppTypography.tagline(context),
-                )
-                .animate()
-                .fadeIn(delay: 500.ms, duration: 800.ms)
-                .scale(begin: const Offset(0.9, 0.9), end: const Offset(1, 1)),
+                      context.l10n.tagline,
+                      textAlign: TextAlign.center,
+                      style: AppTypography.tagline(context),
+                    )
+                    .animate()
+                    .fadeIn(delay: 500.ms, duration: 800.ms)
+                    .scale(
+                      begin: const Offset(0.9, 0.9),
+                      end: const Offset(1, 1),
+                    ),
               ],
             ),
           ),
-          
+
           // Bottom loading indicator
           Positioned(
             bottom: context.h(60),

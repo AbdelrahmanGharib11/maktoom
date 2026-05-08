@@ -3,6 +3,8 @@ import 'package:go_router/go_router.dart';
 import '../../../../core/theme/app_colors.dart';
 import '../../../../core/theme/app_typography.dart';
 import '../../../../core/utils/responsive_helper.dart';
+import '../../../../injection_container.dart';
+import '../../../auth/presentation/cubit/auth_cubit.dart';
 
 class ProfilePage extends StatelessWidget {
   const ProfilePage({super.key});
@@ -62,7 +64,10 @@ class ProfilePage extends StatelessWidget {
                     _buildProfileItem(context, Icons.notifications_none_rounded, 'Notifications'),
                     _buildProfileItem(context, Icons.history_rounded, 'Session History'),
                     _buildProfileItem(context, Icons.help_outline_rounded, 'Help & Support'),
-                    _buildProfileItem(context, Icons.logout_rounded, 'Logout', isDestructive: true),
+                    InkWell(
+                      onTap: () => sl<AuthCubit>().logout(),
+                      child: _buildProfileItem(context, Icons.logout_rounded, 'Logout', isDestructive: true),
+                    ),
                   ],
                 ),
               ),

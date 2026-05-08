@@ -26,20 +26,24 @@ class BookingPage extends StatelessWidget {
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     SizedBox(height: context.h(20)),
-                    
+
                     // Therapist Header
                     Container(
                       padding: EdgeInsets.all(context.w(16)),
                       decoration: BoxDecoration(
                         color: Colors.white.withOpacity(0.5),
                         borderRadius: BorderRadius.circular(16),
-                        border: Border.all(color: AppColors.forestGreen.withOpacity(0.05)),
+                        border: Border.all(
+                          color: AppColors.forestGreen.withOpacity(0.05),
+                        ),
                       ),
                       child: Row(
                         children: [
                           const CircleAvatar(
                             radius: 30,
-                            backgroundImage: AssetImage('assets/images/therapist_1.png'),
+                            backgroundImage: AssetImage(
+                              'assets/images/therapist_1.png',
+                            ),
                           ),
                           SizedBox(width: context.w(16)),
                           Expanded(
@@ -48,19 +52,23 @@ class BookingPage extends StatelessWidget {
                               children: [
                                 Text(
                                   'Dr. Elara Vance',
-                                  style: AppTypography.headingMedium(context).copyWith(
-                                    color: AppColors.forestGreen,
-                                  ),
+                                  style: AppTypography.headingMedium(
+                                    context,
+                                  ).copyWith(color: AppColors.forestGreen),
                                 ),
                                 Text(
                                   'Cognitive Behavioral Specialist',
-                                  style: AppTypography.bodyMedium(context).copyWith(
-                                    color: AppColors.textMuted,
-                                  ),
+                                  style: AppTypography.bodyMedium(
+                                    context,
+                                  ).copyWith(color: AppColors.textMuted),
                                 ),
                                 Row(
                                   children: [
-                                    const Icon(Icons.star_rounded, color: AppColors.mutedGold, size: 18),
+                                    const Icon(
+                                      Icons.star_rounded,
+                                      color: AppColors.mutedGold,
+                                      size: 18,
+                                    ),
                                     const SizedBox(width: 4),
                                     Text(
                                       '4.9 (124 reviews)',
@@ -74,39 +82,39 @@ class BookingPage extends StatelessWidget {
                         ],
                       ),
                     ),
-                    
+
                     SizedBox(height: context.h(30)),
-                    
+
                     Text(
                       'SELECT SESSION TYPE',
-                      style: AppTypography.labelLarge(context).copyWith(
+                      style: AppTypography.bodyLarge(context).copyWith(
                         color: AppColors.textMuted,
                         letterSpacing: 1.2,
                       ),
                     ),
                     SizedBox(height: context.h(12)),
                     const SessionTypeSelector(),
-                    
+
                     SizedBox(height: context.h(30)),
-                    
+
                     Text(
                       'DURATION',
-                      style: AppTypography.labelLarge(context).copyWith(
+                      style: AppTypography.bodyLarge(context).copyWith(
                         color: AppColors.textMuted,
                         letterSpacing: 1.2,
                       ),
                     ),
                     SizedBox(height: context.h(12)),
                     const DurationSelector(),
-                    
+
                     SizedBox(height: context.h(30)),
-                    
+
                     const SlotPicker(),
-                    
+
                     SizedBox(height: context.h(30)),
-                    
+
                     const PaymentSummaryCard(),
-                    
+
                     SizedBox(height: context.h(40)),
                   ],
                 ),
@@ -143,10 +151,9 @@ class BookingPage extends StatelessWidget {
             children: [
               Text(
                 'Confirm & Pay',
-                style: AppTypography.headingSmall(context).copyWith(
-                  color: Colors.white,
-                  fontWeight: FontWeight.bold,
-                ),
+                style: AppTypography.headingSmall(
+                  context,
+                ).copyWith(color: Colors.white, fontWeight: FontWeight.bold),
               ),
               const SizedBox(width: 12),
               const Icon(Icons.arrow_forward_rounded, size: 20),
