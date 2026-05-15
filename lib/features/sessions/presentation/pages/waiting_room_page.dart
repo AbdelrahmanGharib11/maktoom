@@ -2,8 +2,13 @@ import 'package:flutter/material.dart';
 import 'package:flutter_animate/flutter_animate.dart';
 import '../../../../core/theme/app_colors.dart';
 
-class SessionPage extends StatelessWidget {
-  const SessionPage({super.key});
+class WaitingRoomPage extends StatelessWidget {
+  /// The session ID this waiting room is for.
+  /// Route: /app/home/waiting-room/:sessionId
+  ///        /app/therapists/session/:id/waiting
+  final String sessionId;
+
+  const WaitingRoomPage({super.key, required this.sessionId});
 
   @override
   Widget build(BuildContext context) {
@@ -19,7 +24,7 @@ class SessionPage extends StatelessWidget {
               ),
             ),
           ),
-          
+
           // Header
           SafeArea(
             child: Padding(
@@ -46,7 +51,7 @@ class SessionPage extends StatelessWidget {
               ),
             ),
           ),
-          
+
           // Center Avatar & Animation
           Center(
             child: Column(
@@ -66,7 +71,7 @@ class SessionPage extends StatelessWidget {
                     ).animate(onPlay: (controller) => controller.repeat())
                      .scale(begin: const Offset(1, 1), end: const Offset(1.5, 1.5), duration: 2.seconds)
                      .fadeOut(duration: 2.seconds),
-                    
+
                     // Avatar
                     const CircleAvatar(
                       radius: 60,
@@ -85,26 +90,14 @@ class SessionPage extends StatelessWidget {
                   style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
                 ),
                 const Text(
-                  'Speaking...',
+                  'Waiting to join...',
                   style: TextStyle(color: AppColors.warmSage, fontWeight: FontWeight.w600),
                 ).animate(onPlay: (controller) => controller.repeat())
                  .fadeIn(duration: 1.seconds).fadeOut(delay: 1.seconds),
               ],
             ),
           ),
-          
-          // Floating Notes Button
-          Positioned(
-            right: 20,
-            bottom: 120,
-            child: FloatingActionButton.small(
-              onPressed: () {},
-              backgroundColor: Colors.white,
-              elevation: 2,
-              child: const Icon(Icons.note_alt_outlined, color: AppColors.forestGreen),
-            ),
-          ).animate().fadeIn(delay: 1000.ms),
-          
+
           // Bottom Controls
           Positioned(
             bottom: 40,

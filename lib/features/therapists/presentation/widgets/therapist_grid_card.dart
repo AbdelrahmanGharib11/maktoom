@@ -10,7 +10,7 @@ class TherapistGridCard extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return InkWell(
-      onTap: () => context.push('/booking'),
+      onTap: () => context.push('/app/therapists/sarah-ahmed'),
       borderRadius: BorderRadius.circular(context.w(24)),
       child: Container(
         decoration: BoxDecoration(

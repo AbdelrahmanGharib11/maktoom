@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:go_router/go_router.dart';
 import '../../../../core/theme/app_colors.dart';
 import '../../../../core/theme/app_typography.dart';
 import '../../../../core/utils/responsive_helper.dart';
@@ -175,7 +174,6 @@ class ResourceLibraryPage extends StatelessWidget {
         backgroundColor: AppColors.forestGreen,
         child: const Icon(Icons.add, color: Colors.white),
       ),
-      bottomNavigationBar: _buildBottomNav(context),
     );
   }
 
@@ -298,7 +296,6 @@ class ResourceLibraryPage extends StatelessWidget {
                         ? Colors.white
                         : AppColors.forestGreen,
                     elevation: 0,
-
                     minimumSize: Size(double.infinity, context.h(48)),
                     shape: RoundedRectangleBorder(
                       borderRadius: BorderRadius.circular(12),
@@ -380,64 +377,6 @@ class ResourceLibraryPage extends StatelessWidget {
             Icons.check_circle_outline_rounded,
             color: AppColors.forestGreen,
             size: 20,
-          ),
-        ],
-      ),
-    );
-  }
-
-  Widget _buildBottomNav(BuildContext context) {
-    return Container(
-      decoration: BoxDecoration(
-        color: const Color(0xFFF8F9F0),
-        border: Border(
-          top: BorderSide(color: AppColors.forestGreen.withOpacity(0.05)),
-        ),
-      ),
-      child: BottomNavigationBar(
-        elevation: 0,
-        backgroundColor: Colors.transparent,
-        selectedItemColor: AppColors.forestGreen,
-        unselectedItemColor: AppColors.textMuted,
-        type: BottomNavigationBarType.fixed,
-        currentIndex: 1, // Therapists
-        onTap: (index) {
-          switch (index) {
-            case 0: context.go('/'); break;
-            case 1: context.go('/therapists'); break;
-            case 2: context.go('/journal'); break;
-            case 3: context.go('/circles'); break;
-            case 4: context.go('/profile'); break;
-          }
-        },
-        items: const [
-          BottomNavigationBarItem(
-            icon: Icon(Icons.home_outlined),
-            label: 'Home',
-          ),
-          BottomNavigationBarItem(
-            icon: CircleAvatar(
-              radius: 18,
-              backgroundColor: Color(0xFFD4E9E2),
-              child: Icon(
-                Icons.psychology_rounded,
-                color: AppColors.forestGreen,
-                size: 20,
-              ),
-            ),
-            label: 'Therapists',
-          ),
-          BottomNavigationBarItem(
-            icon: Icon(Icons.menu_book_outlined),
-            label: 'Journal',
-          ),
-          BottomNavigationBarItem(
-            icon: Icon(Icons.groups_outlined),
-            label: 'Circles',
-          ),
-          BottomNavigationBarItem(
-            icon: Icon(Icons.person_outline),
-            label: 'Profile',
           ),
         ],
       ),

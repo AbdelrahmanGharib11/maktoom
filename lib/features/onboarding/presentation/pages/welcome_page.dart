@@ -72,11 +72,11 @@ class WelcomePage extends StatelessWidget {
                     children: [
                       MaktomButton(
                         text: 'Enter The Sanctuary',
-                        onPressed: () => context.go('/'),
+                        onPressed: () => context.go('/signup'),
                       ),
                       SizedBox(height: context.h(16)),
                       OutlinedButton(
-                        onPressed: () {},
+                        onPressed: () => context.go('/login'),
                         style: OutlinedButton.styleFrom(
                           minimumSize: Size(double.infinity, context.h(56)),
                           side: BorderSide(color: AppColors.forestGreen.withOpacity(0.3)),

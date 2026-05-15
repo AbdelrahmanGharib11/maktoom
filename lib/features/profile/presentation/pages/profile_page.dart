@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:go_router/go_router.dart';
+
 import '../../../../core/theme/app_colors.dart';
 import '../../../../core/theme/app_typography.dart';
 import '../../../../core/utils/responsive_helper.dart';
@@ -21,7 +21,7 @@ class ProfilePage extends StatelessWidget {
                 children: [
                   IconButton(
                     icon: const Icon(Icons.arrow_back_rounded, color: AppColors.textDark),
-                    onPressed: () => context.go('/'),
+                    onPressed: () => Navigator.of(context).maybePop(),
                   ),
                   const Spacer(),
                   Text(
@@ -70,7 +70,7 @@ class ProfilePage extends StatelessWidget {
           ],
         ),
       ),
-      bottomNavigationBar: _buildBottomNav(context),
+
     );
   }
 
@@ -101,43 +101,4 @@ class ProfilePage extends StatelessWidget {
     );
   }
 
-  Widget _buildBottomNav(BuildContext context) {
-    return Container(
-      decoration: BoxDecoration(
-        color: const Color(0xFFF8F9F0),
-        border: Border(top: BorderSide(color: AppColors.forestGreen.withOpacity(0.05))),
-      ),
-      child: BottomNavigationBar(
-        elevation: 0,
-        backgroundColor: Colors.transparent,
-        selectedItemColor: AppColors.forestGreen,
-        unselectedItemColor: AppColors.textMuted,
-        type: BottomNavigationBarType.fixed,
-        currentIndex: 4, // Profile
-        onTap: (index) {
-          switch (index) {
-            case 0: context.go('/'); break;
-            case 1: context.go('/therapists'); break;
-            case 2: context.go('/journal'); break;
-            case 3: context.go('/circles'); break;
-            case 4: context.go('/profile'); break;
-          }
-        },
-        items: const [
-          BottomNavigationBarItem(icon: Icon(Icons.home_outlined), label: 'Home'),
-          BottomNavigationBarItem(icon: Icon(Icons.psychology_outlined), label: 'Therapists'),
-          BottomNavigationBarItem(icon: Icon(Icons.menu_book_outlined), label: 'Journal'),
-          BottomNavigationBarItem(icon: Icon(Icons.groups_outlined), label: 'Circles'),
-          BottomNavigationBarItem(
-            icon: CircleAvatar(
-              radius: 18,
-              backgroundColor: Color(0xFFD4E9E2),
-              child: Icon(Icons.person_rounded, color: AppColors.forestGreen, size: 20),
-            ),
-            label: 'Profile',
-          ),
-        ],
-      ),
-    );
-  }
-}
+}

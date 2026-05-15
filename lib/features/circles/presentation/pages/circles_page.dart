@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_animate/flutter_animate.dart';
-import 'package:go_router/go_router.dart';
+
 import '../../../../core/theme/app_colors.dart';
 import '../widgets/circle_card.dart';
 import '../widgets/circle_category_chip.dart';
@@ -118,43 +118,7 @@ class CirclesPage extends StatelessWidget {
           ],
         ),
       ),
-      bottomNavigationBar: Container(
-        decoration: BoxDecoration(
-          color: const Color(0xFFF8F9F0),
-          border: Border(top: BorderSide(color: AppColors.forestGreen.withOpacity(0.05))),
-        ),
-        child: BottomNavigationBar(
-          elevation: 0,
-          backgroundColor: Colors.transparent,
-          selectedItemColor: AppColors.forestGreen,
-          unselectedItemColor: AppColors.textMuted,
-          type: BottomNavigationBarType.fixed,
-          currentIndex: 3, // Circles
-          onTap: (index) {
-            switch (index) {
-              case 0: context.go('/'); break;
-              case 1: context.go('/therapists'); break;
-              case 2: context.go('/journal'); break;
-              case 3: context.go('/circles'); break;
-              case 4: context.go('/profile'); break;
-            }
-          },
-          items: const [
-            BottomNavigationBarItem(icon: Icon(Icons.home_outlined), label: 'Home'),
-            BottomNavigationBarItem(icon: Icon(Icons.psychology_outlined), label: 'Therapists'),
-            BottomNavigationBarItem(icon: Icon(Icons.menu_book_outlined), label: 'Journal'),
-            BottomNavigationBarItem(
-              icon: CircleAvatar(
-                radius: 18,
-                backgroundColor: Color(0xFFD4E9E2),
-                child: Icon(Icons.groups_rounded, color: AppColors.forestGreen, size: 20),
-              ),
-              label: 'Circles',
-            ),
-            BottomNavigationBarItem(icon: Icon(Icons.person_outline), label: 'Profile'),
-          ],
-        ),
-      ),
+
     );
   }
 }
