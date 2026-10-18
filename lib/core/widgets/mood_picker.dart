@@ -43,7 +43,7 @@ class _MoodPickerState extends State<MoodPicker> {
               borderRadius: BorderRadius.circular(16),
               boxShadow: [
                 BoxShadow(
-                  color: Colors.black.withOpacity(0.03),
+                  color: Colors.black.withValues(alpha: 0.03),
                   blurRadius: 10,
                   offset: const Offset(0, 4),
                 ),
@@ -51,16 +51,15 @@ class _MoodPickerState extends State<MoodPicker> {
             ),
             child: Column(
               children: [
-                Text(
-                  mood['emoji']!,
-                  style: TextStyle(fontSize: context.w(24)),
-                ),
+                Text(mood['emoji']!, style: TextStyle(fontSize: context.w(24))),
                 SizedBox(height: context.h(4)),
                 Text(
                   mood['label']!,
                   style: AppTypography.bodySmall(context).copyWith(
                     fontSize: 10,
-                    fontWeight: isSelected ? FontWeight.bold : FontWeight.normal,
+                    fontWeight: isSelected
+                        ? FontWeight.bold
+                        : FontWeight.normal,
                     color: isSelected ? Colors.white : AppColors.textMuted,
                   ),
                 ),

@@ -386,7 +386,7 @@ class _AboutTab extends StatelessWidget {
     return ListView(
       padding: const EdgeInsets.fromLTRB(24, 24, 24, 120), // Padding for CTA
       children: [
-        _SectionTitle(title: 'About'),
+        const _SectionTitle(title: 'About'),
         const SizedBox(height: 12),
         Text(
           therapist.bio,
@@ -395,7 +395,7 @@ class _AboutTab extends StatelessWidget {
           ).copyWith(color: AppColors.textMuted, height: 1.6),
         ),
         const SizedBox(height: 32),
-        _SectionTitle(title: 'Specialties'),
+        const _SectionTitle(title: 'Specialties'),
         const SizedBox(height: 12),
         Wrap(
           spacing: 8,
@@ -421,7 +421,7 @@ class _AboutTab extends StatelessWidget {
           }).toList(),
         ),
         const SizedBox(height: 32),
-        _SectionTitle(title: 'Languages'),
+        const _SectionTitle(title: 'Languages'),
         const SizedBox(height: 12),
         Wrap(
           spacing: 8,

@@ -17,14 +17,14 @@ class AppTheme {
         onSecondary: Colors.white,
       ),
       scaffoldBackgroundColor: AppColors.background,
-      // We will handle specific fonts in AppTypography, 
+      // We will handle specific fonts in AppTypography,
       // but we set a default here.
-      fontFamily: GoogleFonts.outfit().fontFamily, 
+      fontFamily: GoogleFonts.outfit().fontFamily,
       textTheme: GoogleFonts.outfitTextTheme().copyWith(
         bodyLarge: GoogleFonts.inter(fontSize: 16, color: AppColors.textDark),
         bodyMedium: GoogleFonts.inter(
           fontSize: 14,
-          color: AppColors.textDark.withOpacity(0.8),
+          color: AppColors.textDark.withValues(alpha: 0.8),
         ),
       ),
       elevatedButtonTheme: ElevatedButtonThemeData(
@@ -41,13 +41,12 @@ class AppTheme {
       cardTheme: CardThemeData(
         color: AppColors.surface,
         elevation: 2,
-        shadowColor: AppColors.forestGreen.withOpacity(0.05),
+        shadowColor: AppColors.forestGreen.withValues(alpha: 0.05),
         shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(20)),
       ),
     );
   }
 
-  static ThemeData get darkTheme => lightTheme.copyWith(
-    brightness: Brightness.dark,
-  );
+  static ThemeData get darkTheme =>
+      lightTheme.copyWith(brightness: Brightness.dark);
 }

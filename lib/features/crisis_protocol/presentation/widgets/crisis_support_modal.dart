@@ -47,7 +47,7 @@ class CrisisSupportModal extends StatelessWidget {
             width: 40,
             height: 4,
             decoration: BoxDecoration(
-              color: const Color(0xFF8D6E63).withOpacity(0.3),
+              color: const Color(0xFF8D6E63).withValues(alpha: 0.3),
               borderRadius: BorderRadius.circular(2),
             ),
           ),
@@ -55,24 +55,25 @@ class CrisisSupportModal extends StatelessWidget {
           SizedBox(height: context.h(32)),
 
           Icon(
-            Icons.favorite_rounded,
-            color: AppColors.amber,
-            size: context.w(64),
-          ).animate(onPlay: (controller) => controller.repeat(reverse: true))
-           .scale(
-             begin: const Offset(0.9, 0.9),
-             end: const Offset(1.1, 1.1),
-             duration: 2.seconds,
-           ),
+                Icons.favorite_rounded,
+                color: AppColors.amber,
+                size: context.w(64),
+              )
+              .animate(onPlay: (controller) => controller.repeat(reverse: true))
+              .scale(
+                begin: const Offset(0.9, 0.9),
+                end: const Offset(1.1, 1.1),
+                duration: 2.seconds,
+              ),
 
           SizedBox(height: context.h(24)),
 
           Text(
             'We are here for you.',
             textAlign: TextAlign.center,
-            style: AppTypography.headingLarge(context).copyWith(
-              color: const Color(0xFF795548),
-            ),
+            style: AppTypography.headingLarge(
+              context,
+            ).copyWith(color: const Color(0xFF795548)),
           ).animate().fadeIn(),
 
           SizedBox(height: context.h(12)),
@@ -81,10 +82,9 @@ class CrisisSupportModal extends StatelessWidget {
             'It is okay to not be okay. If you are feeling overwhelmed, '
             'we can connect you with someone immediately.',
             textAlign: TextAlign.center,
-            style: AppTypography.bodyLarge(context).copyWith(
-              color: const Color(0xFF8D6E63),
-              height: 1.5,
-            ),
+            style: AppTypography.bodyLarge(
+              context,
+            ).copyWith(color: const Color(0xFF8D6E63), height: 1.5),
           ).animate().fadeIn(delay: 300.ms),
 
           SizedBox(height: context.h(40)),

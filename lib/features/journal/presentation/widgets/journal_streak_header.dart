@@ -11,9 +11,11 @@ class JournalStreakHeader extends StatelessWidget {
     return Container(
       padding: EdgeInsets.all(context.w(20)),
       decoration: BoxDecoration(
-        color: AppColors.surfaceGreen.withOpacity(0.2),
+        color: AppColors.surfaceGreen.withValues(alpha: 0.2),
         borderRadius: BorderRadius.circular(24),
-        border: Border.all(color: AppColors.forestGreen.withOpacity(0.05)),
+        border: Border.all(
+          color: AppColors.forestGreen.withValues(alpha: 0.05),
+        ),
       ),
       child: Column(
         children: [
@@ -23,7 +25,7 @@ class JournalStreakHeader extends StatelessWidget {
               Text(
                 'WEEKLY PATH',
                 style: AppTypography.labelLarge(context).copyWith(
-                  color: AppColors.forestGreen.withOpacity(0.6),
+                  color: AppColors.forestGreen.withValues(alpha: 0.6),
                   letterSpacing: 1.2,
                 ),
               ),
@@ -44,36 +46,48 @@ class JournalStreakHeader extends StatelessWidget {
               final days = ['M', 'T', 'W', 'T', 'F', 'S', 'S'];
               final moods = ['😊', '😁', '😊', '😐', '😊', '😄', '?'];
               final isCurrent = index == 5; // Saturday in the image
-              
+
               return Column(
                 children: [
                   Text(
                     days[index],
-                    style: AppTypography.bodySmall(context).copyWith(
-                      color: AppColors.textMuted,
-                      fontSize: 10,
-                    ),
+                    style: AppTypography.bodySmall(
+                      context,
+                    ).copyWith(color: AppColors.textMuted, fontSize: 10),
                   ),
                   SizedBox(height: context.h(8)),
                   Container(
                     width: context.w(36),
                     height: context.w(36),
                     decoration: BoxDecoration(
-                      color: isCurrent ? AppColors.forestGreen : (moods[index] == '?' ? Colors.transparent : AppColors.warmSage.withOpacity(0.2)),
+                      color: isCurrent
+                          ? AppColors.forestGreen
+                          : (moods[index] == '?'
+                                ? Colors.transparent
+                                : AppColors.warmSage.withValues(alpha: 0.2)),
                       shape: BoxShape.circle,
-                      border: moods[index] == '?' ? Border.all(color: AppColors.textMuted.withOpacity(0.3), style: BorderStyle.none) : null,
+                      border: moods[index] == '?'
+                          ? Border.all(
+                              color: AppColors.textMuted.withValues(alpha: 0.3),
+                              style: BorderStyle.none,
+                            )
+                          : null,
                     ),
                     child: Center(
-                      child: moods[index] == '?' 
-                        ? Icon(Icons.help_outline, size: 16, color: AppColors.textMuted.withOpacity(0.3))
-                        : Text(
-                            moods[index],
-                            style: TextStyle(fontSize: isCurrent ? 18 : 16),
-                          ),
+                      child: moods[index] == '?'
+                          ? Icon(
+                              Icons.help_outline,
+                              size: 16,
+                              color: AppColors.textMuted.withValues(alpha: 0.3),
+                            )
+                          : Text(
+                              moods[index],
+                              style: TextStyle(fontSize: isCurrent ? 18 : 16),
+                            ),
                     ),
                   ),
                   if (moods[index] == '?')
-                    const SizedBox() // Placeholder for dashed circle in image
+                    const SizedBox(), // Placeholder for dashed circle in image
                 ],
               );
             }),

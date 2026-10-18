@@ -19,7 +19,10 @@ class JournalPage extends StatelessWidget {
           children: [
             // Custom Header
             Padding(
-              padding: EdgeInsets.symmetric(horizontal: context.w(20), vertical: context.h(10)),
+              padding: EdgeInsets.symmetric(
+                horizontal: context.w(20),
+                vertical: context.h(10),
+              ),
               child: Row(
                 children: [
                   const Icon(Icons.menu_rounded, color: AppColors.textDark),
@@ -33,15 +36,24 @@ class JournalPage extends StatelessWidget {
                   ),
                   const Spacer(),
                   Container(
-                    padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 4),
+                    padding: const EdgeInsets.symmetric(
+                      horizontal: 8,
+                      vertical: 4,
+                    ),
                     decoration: BoxDecoration(
                       color: Colors.white,
                       borderRadius: BorderRadius.circular(20),
-                      border: Border.all(color: AppColors.forestGreen.withOpacity(0.1)),
+                      border: Border.all(
+                        color: AppColors.forestGreen.withValues(alpha: 0.1),
+                      ),
                     ),
                     child: Row(
                       children: [
-                        const Icon(Icons.lock_outline_rounded, size: 14, color: AppColors.forestGreen),
+                        const Icon(
+                          Icons.lock_outline_rounded,
+                          size: 14,
+                          color: AppColors.forestGreen,
+                        ),
                         const SizedBox(width: 4),
                         Text(
                           'Encrypted',
@@ -54,18 +66,26 @@ class JournalPage extends StatelessWidget {
                     ),
                   ),
                   const SizedBox(width: 12),
-                  const Icon(Icons.warning_amber_rounded, color: AppColors.forestGreen),
+                  const Icon(
+                    Icons.warning_amber_rounded,
+                    color: AppColors.forestGreen,
+                  ),
                 ],
               ),
             ),
-            
+
             Expanded(
               child: CustomScrollView(
                 physics: const BouncingScrollPhysics(),
                 slivers: [
                   SliverToBoxAdapter(
                     child: Padding(
-                      padding: EdgeInsets.fromLTRB(context.w(20), context.h(20), context.w(20), context.h(8)),
+                      padding: EdgeInsets.fromLTRB(
+                        context.w(20),
+                        context.h(20),
+                        context.w(20),
+                        context.h(8),
+                      ),
                       child: Column(
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
@@ -78,9 +98,9 @@ class JournalPage extends StatelessWidget {
                           ),
                           Text(
                             'Your thoughts are safe in this sanctuary.',
-                            style: AppTypography.bodyMedium(context).copyWith(
-                              color: AppColors.textMuted,
-                            ),
+                            style: AppTypography.bodyMedium(
+                              context,
+                            ).copyWith(color: AppColors.textMuted),
                           ),
                           SizedBox(height: context.h(32)),
                           const JournalStreakHeader(),
@@ -90,12 +110,17 @@ class JournalPage extends StatelessWidget {
                             children: [
                               Text(
                                 'Recent Entries',
-                                style: AppTypography.bodyLarge(context).copyWith(
-                                  fontWeight: FontWeight.bold,
-                                  color: AppColors.textDark,
-                                ),
+                                style: AppTypography.bodyLarge(context)
+                                    .copyWith(
+                                      fontWeight: FontWeight.bold,
+                                      color: AppColors.textDark,
+                                    ),
                               ),
-                              Icon(Icons.tune_rounded, color: AppColors.textMuted, size: context.w(20)),
+                              Icon(
+                                Icons.tune_rounded,
+                                color: AppColors.textMuted,
+                                size: context.w(20),
+                              ),
                             ],
                           ),
                           SizedBox(height: context.h(20)),
@@ -103,7 +128,7 @@ class JournalPage extends StatelessWidget {
                       ),
                     ),
                   ),
-                  
+
                   SliverPadding(
                     padding: EdgeInsets.symmetric(horizontal: context.w(20)),
                     sliver: SliverList(
@@ -113,7 +138,8 @@ class JournalPage extends StatelessWidget {
                           moodEmoji: '😊',
                           date: 'Saturday, Oct 21',
                           title: 'Moment of Clarity',
-                          content: 'I spent the morning walking through the botanical gardens. The quiet air helped...',
+                          content:
+                              'I spent the morning walking through the botanical gardens. The quiet air helped...',
                           tags: ['Peace', 'Growth'],
                         ),
                         const JournalEntryCard(
@@ -121,7 +147,8 @@ class JournalPage extends StatelessWidget {
                           moodEmoji: '😐',
                           date: 'Thursday, Oct 19',
                           title: 'Seeking Balance',
-                          content: 'Work has been demanding lately. I\'m trying to find boundaries but it\'s difficult...',
+                          content:
+                              'Work has been demanding lately. I\'m trying to find boundaries but it\'s difficult...',
                           tags: [],
                         ),
                         const JournalEntryCard(
@@ -129,14 +156,16 @@ class JournalPage extends StatelessWidget {
                           moodEmoji: '😊',
                           date: 'Tuesday, Oct 17',
                           title: 'Morning Stillness',
-                          content: 'Woke up before the alarm today. The mist in the garden was beautiful. Captured this to remember the feeling of stillness.',
+                          content:
+                              'Woke up before the alarm today. The mist in the garden was beautiful. Captured this to remember the feeling of stillness.',
                           tags: [],
-                          imagePath: 'assets/images/garden_mist.png', // Placeholder or real
+                          imagePath:
+                              'assets/images/garden_mist.png', // Placeholder or real
                         ),
                       ]),
                     ),
                   ),
-                  
+
                   // Bottom spacing for FAB
                   SliverToBoxAdapter(child: SizedBox(height: context.h(80))),
                 ],
@@ -150,8 +179,6 @@ class JournalPage extends StatelessWidget {
         backgroundColor: AppColors.forestGreen,
         child: const Icon(Icons.add, color: Colors.white, size: 28),
       ).animate().scale(delay: 400.ms),
-
     );
   }
-
-}
+}

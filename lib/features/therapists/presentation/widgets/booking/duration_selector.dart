@@ -28,15 +28,17 @@ class _DurationSelectorState extends State<DurationSelector> {
             onTap: () => setState(() => _selectedIndex = index),
             child: AnimatedContainer(
               duration: const Duration(milliseconds: 200),
-              margin: EdgeInsets.only(
-                right: index == 0 ? context.w(12) : 0,
-              ),
+              margin: EdgeInsets.only(right: index == 0 ? context.w(12) : 0),
               padding: EdgeInsets.symmetric(vertical: context.h(24)),
               decoration: BoxDecoration(
-                color: isSelected ? AppColors.forestGreen : Colors.white.withOpacity(0.5),
+                color: isSelected
+                    ? AppColors.forestGreen
+                    : Colors.white.withValues(alpha: 0.5),
                 borderRadius: BorderRadius.circular(16),
                 border: Border.all(
-                  color: isSelected ? AppColors.forestGreen : AppColors.forestGreen.withOpacity(0.05),
+                  color: isSelected
+                      ? AppColors.forestGreen
+                      : AppColors.forestGreen.withValues(alpha: 0.05),
                 ),
               ),
               child: Column(
@@ -52,7 +54,9 @@ class _DurationSelectorState extends State<DurationSelector> {
                   Text(
                     _durations[index]['price'],
                     style: AppTypography.bodySmall(context).copyWith(
-                      color: isSelected ? Colors.white.withOpacity(0.7) : AppColors.textMuted,
+                      color: isSelected
+                          ? Colors.white.withValues(alpha: 0.7)
+                          : AppColors.textMuted,
                     ),
                   ),
                 ],

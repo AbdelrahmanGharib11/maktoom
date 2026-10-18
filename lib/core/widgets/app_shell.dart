@@ -49,10 +49,7 @@ class _MaktomBottomNav extends StatelessWidget {
   final int currentIndex;
   final ValueChanged<int> onTap;
 
-  const _MaktomBottomNav({
-    required this.currentIndex,
-    required this.onTap,
-  });
+  const _MaktomBottomNav({required this.currentIndex, required this.onTap});
 
   static const _tabs = [
     _TabItem(
@@ -89,7 +86,7 @@ class _MaktomBottomNav extends StatelessWidget {
         color: AppColors.softOffWhite,
         border: Border(
           top: BorderSide(
-            color: AppColors.forestGreen.withOpacity(0.05),
+            color: AppColors.forestGreen.withValues(alpha: 0.05),
             width: 1,
           ),
         ),
@@ -141,10 +138,7 @@ class _TabButton extends StatelessWidget {
   final _TabItem tab;
   final bool isActive;
 
-  const _TabButton({
-    required this.tab,
-    required this.isActive,
-  });
+  const _TabButton({required this.tab, required this.isActive});
 
   @override
   Widget build(BuildContext context) {
@@ -180,7 +174,9 @@ class _TabButton extends StatelessWidget {
               child: Icon(
                 isActive ? tab.activeIcon : tab.icon,
                 key: ValueKey('${tab.label}-$isActive'),
-                color: isActive ? AppColors.forestGreen : const Color(0xFF5A6660),
+                color: isActive
+                    ? AppColors.forestGreen
+                    : const Color(0xFF5A6660),
                 size: 24,
               ),
             ),
@@ -188,7 +184,9 @@ class _TabButton extends StatelessWidget {
             AnimatedDefaultTextStyle(
               duration: 200.ms,
               style: TextStyle(
-                color: isActive ? AppColors.forestGreen : const Color(0xFF5A6660),
+                color: isActive
+                    ? AppColors.forestGreen
+                    : const Color(0xFF5A6660),
                 fontFamily: 'Manrope',
                 fontSize: 11,
                 fontWeight: isActive ? FontWeight.w700 : FontWeight.w600,

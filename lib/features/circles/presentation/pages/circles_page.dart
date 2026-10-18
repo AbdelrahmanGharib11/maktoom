@@ -21,7 +21,10 @@ class CirclesPage extends StatelessWidget {
           children: [
             // Custom Header
             Padding(
-              padding: EdgeInsets.symmetric(horizontal: context.w(20), vertical: context.h(10)),
+              padding: EdgeInsets.symmetric(
+                horizontal: context.w(20),
+                vertical: context.h(10),
+              ),
               child: Row(
                 children: [
                   const Icon(Icons.menu_rounded, color: AppColors.textDark),
@@ -34,7 +37,10 @@ class CirclesPage extends StatelessWidget {
                     ),
                   ),
                   const Spacer(),
-                  const Icon(Icons.warning_amber_rounded, color: AppColors.forestGreen),
+                  const Icon(
+                    Icons.warning_amber_rounded,
+                    color: AppColors.forestGreen,
+                  ),
                 ],
               ),
             ),
@@ -45,15 +51,22 @@ class CirclesPage extends StatelessWidget {
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   Container(
-                    padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 4),
+                    padding: const EdgeInsets.symmetric(
+                      horizontal: 10,
+                      vertical: 4,
+                    ),
                     decoration: BoxDecoration(
-                      color: AppColors.surfaceGreen.withOpacity(0.3),
+                      color: AppColors.surfaceGreen.withValues(alpha: 0.3),
                       borderRadius: BorderRadius.circular(10),
                     ),
                     child: Row(
                       mainAxisSize: MainAxisSize.min,
                       children: [
-                        const Icon(Icons.groups_outlined, size: 14, color: AppColors.forestGreen),
+                        const Icon(
+                          Icons.groups_outlined,
+                          size: 14,
+                          color: AppColors.forestGreen,
+                        ),
                         const SizedBox(width: 6),
                         Text(
                           'Community Spaces',
@@ -76,12 +89,14 @@ class CirclesPage extends StatelessWidget {
                   SizedBox(height: context.h(8)),
                   Text(
                     'Join a safe space to share and listen anonymously.',
-                    style: AppTypography.bodyMedium(context).copyWith(color: AppColors.textMuted),
+                    style: AppTypography.bodyMedium(
+                      context,
+                    ).copyWith(color: AppColors.textMuted),
                   ),
                 ],
               ),
             ),
-            
+
             // Categories
             SizedBox(
               height: context.h(40),
@@ -109,7 +124,7 @@ class CirclesPage extends StatelessWidget {
                     'Managing Work Stress',
                     'Quiet Reflection Group',
                     'Parenthood Support',
-                    'Social Anxiety Helpers'
+                    'Social Anxiety Helpers',
                   ];
                   return CircleCard(title: titles[index], index: index);
                 },
@@ -118,7 +133,6 @@ class CirclesPage extends StatelessWidget {
           ],
         ),
       ),
-
     );
   }
 }

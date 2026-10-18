@@ -37,14 +37,20 @@ class WaitingRoomPage extends StatelessWidget {
                     icon: const Icon(Icons.close, color: AppColors.textDark),
                   ),
                   Container(
-                    padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 6),
+                    padding: const EdgeInsets.symmetric(
+                      horizontal: 12,
+                      vertical: 6,
+                    ),
                     decoration: BoxDecoration(
                       color: Colors.white,
                       borderRadius: BorderRadius.circular(20),
                     ),
                     child: const Text(
                       '24:15',
-                      style: TextStyle(fontWeight: FontWeight.bold, fontSize: 12),
+                      style: TextStyle(
+                        fontWeight: FontWeight.bold,
+                        fontSize: 12,
+                      ),
                     ),
                   ),
                 ],
@@ -62,15 +68,20 @@ class WaitingRoomPage extends StatelessWidget {
                   children: [
                     // Pulsing Ring
                     Container(
-                      width: 160,
-                      height: 160,
-                      decoration: BoxDecoration(
-                        shape: BoxShape.circle,
-                        color: AppColors.warmSage.withOpacity(0.2),
-                      ),
-                    ).animate(onPlay: (controller) => controller.repeat())
-                     .scale(begin: const Offset(1, 1), end: const Offset(1.5, 1.5), duration: 2.seconds)
-                     .fadeOut(duration: 2.seconds),
+                          width: 160,
+                          height: 160,
+                          decoration: BoxDecoration(
+                            shape: BoxShape.circle,
+                            color: AppColors.warmSage.withValues(alpha: 0.2),
+                          ),
+                        )
+                        .animate(onPlay: (controller) => controller.repeat())
+                        .scale(
+                          begin: const Offset(1, 1),
+                          end: const Offset(1.5, 1.5),
+                          duration: 2.seconds,
+                        )
+                        .fadeOut(duration: 2.seconds),
 
                     // Avatar
                     const CircleAvatar(
@@ -79,7 +90,11 @@ class WaitingRoomPage extends StatelessWidget {
                       child: CircleAvatar(
                         radius: 56,
                         backgroundColor: AppColors.surfaceGreen,
-                        child: Icon(Icons.psychology, size: 60, color: AppColors.forestGreen),
+                        child: Icon(
+                          Icons.psychology,
+                          size: 60,
+                          color: AppColors.forestGreen,
+                        ),
                       ),
                     ),
                   ],
@@ -90,10 +105,15 @@ class WaitingRoomPage extends StatelessWidget {
                   style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
                 ),
                 const Text(
-                  'Waiting to join...',
-                  style: TextStyle(color: AppColors.warmSage, fontWeight: FontWeight.w600),
-                ).animate(onPlay: (controller) => controller.repeat())
-                 .fadeIn(duration: 1.seconds).fadeOut(delay: 1.seconds),
+                      'Waiting to join...',
+                      style: TextStyle(
+                        color: AppColors.warmSage,
+                        fontWeight: FontWeight.w600,
+                      ),
+                    )
+                    .animate(onPlay: (controller) => controller.repeat())
+                    .fadeIn(duration: 1.seconds)
+                    .fadeOut(delay: 1.seconds),
               ],
             ),
           ),
@@ -130,7 +150,7 @@ class WaitingRoomPage extends StatelessWidget {
         color: isEnd ? const Color(0xFFE57373) : Colors.white,
         boxShadow: [
           BoxShadow(
-            color: Colors.black.withOpacity(0.05),
+            color: Colors.black.withValues(alpha: 0.05),
             blurRadius: 10,
           ),
         ],

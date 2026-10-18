@@ -43,7 +43,7 @@ class _SplashPageState extends State<SplashPage> {
               ),
             ),
           ).animate().fadeIn(duration: 1500.ms),
-          
+
           // Content
           Center(
             child: Column(
@@ -51,28 +51,35 @@ class _SplashPageState extends State<SplashPage> {
               children: [
                 // Logo Placeholder / Text
                 Image.asset(
-                  'assets/images/logo.png',
-                  width: context.w(180),
-                  fit: BoxFit.contain,
-                )
-                .animate()
-                .fadeIn(duration: 800.ms)
-                .scale(begin: const Offset(0.8, 0.8), end: const Offset(1, 1), curve: Curves.easeOutBack),
-                
+                      'assets/images/logo.png',
+                      width: context.w(180),
+                      fit: BoxFit.contain,
+                    )
+                    .animate()
+                    .fadeIn(duration: 800.ms)
+                    .scale(
+                      begin: const Offset(0.8, 0.8),
+                      end: const Offset(1, 1),
+                      curve: Curves.easeOutBack,
+                    ),
+
                 SizedBox(height: context.h(16)),
-                
+
                 Text(
-                  context.l10n.tagline,
-                  textAlign: TextAlign.center,
-                  style: AppTypography.tagline(context),
-                )
-                .animate()
-                .fadeIn(delay: 500.ms, duration: 800.ms)
-                .scale(begin: const Offset(0.9, 0.9), end: const Offset(1, 1)),
+                      context.l10n.tagline,
+                      textAlign: TextAlign.center,
+                      style: AppTypography.tagline(context),
+                    )
+                    .animate()
+                    .fadeIn(delay: 500.ms, duration: 800.ms)
+                    .scale(
+                      begin: const Offset(0.9, 0.9),
+                      end: const Offset(1, 1),
+                    ),
               ],
             ),
           ),
-          
+
           // Bottom loading indicator
           Positioned(
             bottom: context.h(60),
@@ -85,7 +92,7 @@ class _SplashPageState extends State<SplashPage> {
                 child: CircularProgressIndicator(
                   strokeWidth: 2,
                   valueColor: AlwaysStoppedAnimation<Color>(
-                    AppColors.forestGreen.withOpacity(0.3),
+                    AppColors.forestGreen.withValues(alpha: 0.3),
                   ),
                 ),
               ),

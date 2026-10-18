@@ -46,7 +46,7 @@ class _SignupPageState extends State<SignupPage> {
       body: Stack(
         children: [
           // Botanical top-left accent
-          Positioned(
+          const Positioned(
             top: -40,
             left: -40,
             child: Opacity(
@@ -60,7 +60,7 @@ class _SignupPageState extends State<SignupPage> {
           ).animate().fadeIn(duration: 1.2.seconds),
 
           // Botanical bottom-right accent
-          Positioned(
+          const Positioned(
             bottom: -30,
             right: -30,
             child: Opacity(
@@ -141,22 +141,27 @@ class _SignupPageState extends State<SignupPage> {
                           crossAxisAlignment: CrossAxisAlignment.start,
                           children: [
                             Text(
-                              'Start your journey.',
-                              style: AppTypography.headingLarge(context).copyWith(
-                                fontWeight: FontWeight.w800,
-                                color: AppColors.textDark,
-                                fontSize: 26,
-                              ),
-                            ).animate().fadeIn(delay: 200.ms).slideX(begin: -0.05, end: 0),
+                                  'Start your journey.',
+                                  style: AppTypography.headingLarge(context)
+                                      .copyWith(
+                                        fontWeight: FontWeight.w800,
+                                        color: AppColors.textDark,
+                                        fontSize: 26,
+                                      ),
+                                )
+                                .animate()
+                                .fadeIn(delay: 200.ms)
+                                .slideX(begin: -0.05, end: 0),
 
                             const SizedBox(height: 6),
 
                             RichText(
                               text: TextSpan(
-                                style: AppTypography.bodyMedium(context).copyWith(
-                                  color: AppColors.textMuted,
-                                  height: 1.5,
-                                ),
+                                style: AppTypography.bodyMedium(context)
+                                    .copyWith(
+                                      color: AppColors.textMuted,
+                                      height: 1.5,
+                                    ),
                                 children: const [
                                   TextSpan(text: 'No real name needed. Your '),
                                   TextSpan(
@@ -166,7 +171,10 @@ class _SignupPageState extends State<SignupPage> {
                                       color: AppColors.forestGreen,
                                     ),
                                   ),
-                                  TextSpan(text: ' is auto-generated, preserving your sanctuary.'),
+                                  TextSpan(
+                                    text:
+                                        ' is auto-generated, preserving your sanctuary.',
+                                  ),
                                 ],
                               ),
                             ).animate().fadeIn(delay: 300.ms),
@@ -174,81 +182,104 @@ class _SignupPageState extends State<SignupPage> {
                             SizedBox(height: context.h(28)),
 
                             AuthTextField(
-                              label: 'Email',
-                              hint: 'alias@example.com',
-                              controller: _emailController,
-                              keyboardType: TextInputType.emailAddress,
-                              prefixIcon: Icons.mail_outline_rounded,
-                              validator: (v) => (v == null || v.isEmpty) ? 'Please enter your email' : null,
-                            ).animate().fadeIn(delay: 400.ms).slideY(begin: 0.1, end: 0),
+                                  label: 'Email',
+                                  hint: 'alias@example.com',
+                                  controller: _emailController,
+                                  keyboardType: TextInputType.emailAddress,
+                                  prefixIcon: Icons.mail_outline_rounded,
+                                  validator: (v) => (v == null || v.isEmpty)
+                                      ? 'Please enter your email'
+                                      : null,
+                                )
+                                .animate()
+                                .fadeIn(delay: 400.ms)
+                                .slideY(begin: 0.1, end: 0),
 
                             SizedBox(height: context.h(16)),
 
                             AuthTextField(
-                              label: 'Password',
-                              hint: 'Create a password',
-                              isPassword: true,
-                              controller: _passwordController,
-                              prefixIcon: Icons.lock_outline_rounded,
-                              validator: (v) {
-                                if (v == null || v.isEmpty) return 'Please enter your password';
-                                if (v.length < 8) return 'Password must be at least 8 characters';
-                                return null;
-                              },
-                            ).animate().fadeIn(delay: 500.ms).slideY(begin: 0.1, end: 0),
+                                  label: 'Password',
+                                  hint: 'Create a password',
+                                  isPassword: true,
+                                  controller: _passwordController,
+                                  prefixIcon: Icons.lock_outline_rounded,
+                                  validator: (v) {
+                                    if (v == null || v.isEmpty)
+                                      return 'Please enter your password';
+                                    if (v.length < 8)
+                                      return 'Password must be at least 8 characters';
+                                    return null;
+                                  },
+                                )
+                                .animate()
+                                .fadeIn(delay: 500.ms)
+                                .slideY(begin: 0.1, end: 0),
 
                             SizedBox(height: context.h(16)),
 
                             AuthTextField(
-                              label: 'Confirm Password',
-                              hint: 'Repeat your password',
-                              isPassword: true,
-                              controller: _confirmPasswordController,
-                              prefixIcon: Icons.lock_outline_rounded,
-                              validator: (v) {
-                                if (v == null || v.isEmpty) return 'Please confirm your password';
-                                if (v != _passwordController.text) return 'Passwords do not match';
-                                return null;
-                              },
-                            ).animate().fadeIn(delay: 600.ms).slideY(begin: 0.1, end: 0),
+                                  label: 'Confirm Password',
+                                  hint: 'Repeat your password',
+                                  isPassword: true,
+                                  controller: _confirmPasswordController,
+                                  prefixIcon: Icons.lock_outline_rounded,
+                                  validator: (v) {
+                                    if (v == null || v.isEmpty)
+                                      return 'Please confirm your password';
+                                    if (v != _passwordController.text)
+                                      return 'Passwords do not match';
+                                    return null;
+                                  },
+                                )
+                                .animate()
+                                .fadeIn(delay: 600.ms)
+                                .slideY(begin: 0.1, end: 0),
 
                             SizedBox(height: context.h(28)),
 
                             // Create Account button
                             SizedBox(
-                              width: double.infinity,
-                              height: 54,
-                              child: ElevatedButton(
-                                onPressed: _isLoading ? null : _handleSignup,
-                                style: ElevatedButton.styleFrom(
-                                  backgroundColor: AppColors.forestGreen,
-                                  foregroundColor: Colors.white,
-                                  elevation: 0,
-                                  shape: RoundedRectangleBorder(
-                                    borderRadius: BorderRadius.circular(16),
-                                  ),
-                                ),
-                                child: _isLoading
-                                    ? const SizedBox(
-                                        width: 22,
-                                        height: 22,
-                                        child: CircularProgressIndicator(
-                                          color: Colors.white,
-                                          strokeWidth: 2.5,
-                                        ),
-                                      )
-                                    : Text(
-                                        'Create Account',
-                                        style: AppTypography.bodyLarge(context).copyWith(
-                                          color: Colors.white,
-                                          fontWeight: FontWeight.w700,
-                                        ),
+                                  width: double.infinity,
+                                  height: 54,
+                                  child: ElevatedButton(
+                                    onPressed: _isLoading
+                                        ? null
+                                        : _handleSignup,
+                                    style: ElevatedButton.styleFrom(
+                                      backgroundColor: AppColors.forestGreen,
+                                      foregroundColor: Colors.white,
+                                      elevation: 0,
+                                      shape: RoundedRectangleBorder(
+                                        borderRadius: BorderRadius.circular(16),
                                       ),
-                              ),
-                            ).animate().fadeIn(delay: 700.ms).scale(
-                              begin: const Offset(0.96, 0.96),
-                              end: const Offset(1, 1),
-                            ),
+                                    ),
+                                    child: _isLoading
+                                        ? const SizedBox(
+                                            width: 22,
+                                            height: 22,
+                                            child: CircularProgressIndicator(
+                                              color: Colors.white,
+                                              strokeWidth: 2.5,
+                                            ),
+                                          )
+                                        : Text(
+                                            'Create Account',
+                                            style:
+                                                AppTypography.bodyLarge(
+                                                  context,
+                                                ).copyWith(
+                                                  color: Colors.white,
+                                                  fontWeight: FontWeight.w700,
+                                                ),
+                                          ),
+                                  ),
+                                )
+                                .animate()
+                                .fadeIn(delay: 700.ms)
+                                .scale(
+                                  begin: const Offset(0.96, 0.96),
+                                  end: const Offset(1, 1),
+                                ),
 
                             SizedBox(height: context.h(16)),
 
@@ -263,11 +294,12 @@ class _SignupPageState extends State<SignupPage> {
                                 ),
                                 child: Text(
                                   'Privacy Policy',
-                                  style: AppTypography.bodySmall(context).copyWith(
-                                    color: AppColors.warmSage,
-                                    decoration: TextDecoration.underline,
-                                    decorationColor: AppColors.warmSage,
-                                  ),
+                                  style: AppTypography.bodySmall(context)
+                                      .copyWith(
+                                        color: AppColors.warmSage,
+                                        decoration: TextDecoration.underline,
+                                        decorationColor: AppColors.warmSage,
+                                      ),
                                 ),
                               ),
                             ).animate().fadeIn(delay: 800.ms),
@@ -284,9 +316,9 @@ class _SignupPageState extends State<SignupPage> {
                       children: [
                         Text(
                           'Already have an account? ',
-                          style: AppTypography.bodyMedium(context).copyWith(
-                            color: AppColors.textMuted,
-                          ),
+                          style: AppTypography.bodyMedium(
+                            context,
+                          ).copyWith(color: AppColors.textMuted),
                         ),
                         GestureDetector(
                           onTap: () {

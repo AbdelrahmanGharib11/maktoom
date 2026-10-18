@@ -25,48 +25,54 @@ class WelcomePage extends StatelessWidget {
               ),
             ),
           ).animate().fadeIn(duration: 1.seconds),
-          
+
           SafeArea(
             child: Padding(
               padding: EdgeInsets.symmetric(horizontal: context.w(24)),
               child: Column(
                 children: [
                   SizedBox(height: context.h(40)),
-                  
+
                   // Logo with Gold Underline
                   Image.asset(
                     'assets/images/logo.png',
                     width: context.w(120),
                     fit: BoxFit.contain,
                   ).animate().fadeIn(delay: 200.ms).slideY(begin: -0.2, end: 0),
-                  
+
                   const Spacer(),
-                  
+
                   // Headline
                   Text(
-                    'Your feelings.\nSafe. Anonymous.\nHeard.',
-                    textAlign: TextAlign.center,
-                    style: AppTypography.displayLarge(context).copyWith(
-                      fontSize: context.w(40),
-                      fontWeight: FontWeight.bold,
-                      height: 1.2,
-                    ),
-                  ).animate().fadeIn(delay: 400.ms).scale(begin: const Offset(0.9, 0.9), end: const Offset(1, 1)),
-                  
+                        'Your feelings.\nSafe. Anonymous.\nHeard.',
+                        textAlign: TextAlign.center,
+                        style: AppTypography.displayLarge(context).copyWith(
+                          fontSize: context.w(40),
+                          fontWeight: FontWeight.bold,
+                          height: 1.2,
+                        ),
+                      )
+                      .animate()
+                      .fadeIn(delay: 400.ms)
+                      .scale(
+                        begin: const Offset(0.9, 0.9),
+                        end: const Offset(1, 1),
+                      ),
+
                   SizedBox(height: context.h(24)),
-                  
+
                   // Subtitle
                   Text(
                     'Enter a quiet sanctuary where your voice is valued and your privacy is sacred. Start your journey toward clarity today.',
                     textAlign: TextAlign.center,
                     style: AppTypography.bodyLarge(context).copyWith(
-                      color: AppColors.textMuted.withOpacity(0.8),
+                      color: AppColors.textMuted.withValues(alpha: 0.8),
                       height: 1.5,
                     ),
                   ).animate().fadeIn(delay: 600.ms).slideY(begin: 0.1, end: 0),
-                  
+
                   const Spacer(),
-                  
+
                   // Buttons
                   Column(
                     children: [
@@ -79,7 +85,9 @@ class WelcomePage extends StatelessWidget {
                         onPressed: () => context.go('/login'),
                         style: OutlinedButton.styleFrom(
                           minimumSize: Size(double.infinity, context.h(56)),
-                          side: BorderSide(color: AppColors.forestGreen.withOpacity(0.3)),
+                          side: BorderSide(
+                            color: AppColors.forestGreen.withValues(alpha: 0.3),
+                          ),
                           shape: RoundedRectangleBorder(
                             borderRadius: BorderRadius.circular(16),
                           ),
@@ -94,21 +102,25 @@ class WelcomePage extends StatelessWidget {
                       ),
                     ],
                   ).animate().fadeIn(delay: 800.ms).slideY(begin: 0.2, end: 0),
-                  
+
                   SizedBox(height: context.h(40)),
-                  
+
                   // Footer
                   Column(
                     children: [
                       Row(
                         mainAxisAlignment: MainAxisAlignment.center,
                         children: [
-                          Icon(Icons.verified_user_outlined, size: 14, color: AppColors.textMuted.withOpacity(0.6)),
+                          Icon(
+                            Icons.verified_user_outlined,
+                            size: 14,
+                            color: AppColors.textMuted.withValues(alpha: 0.6),
+                          ),
                           const SizedBox(width: 4),
                           Text(
                             'End-to-end encrypted & private',
                             style: AppTypography.bodySmall(context).copyWith(
-                              color: AppColors.textMuted.withOpacity(0.6),
+                              color: AppColors.textMuted.withValues(alpha: 0.6),
                             ),
                           ),
                         ],
@@ -121,7 +133,7 @@ class WelcomePage extends StatelessWidget {
                             'Privacy Policy',
                             style: AppTypography.bodySmall(context).copyWith(
                               decoration: TextDecoration.underline,
-                              color: AppColors.textMuted.withOpacity(0.6),
+                              color: AppColors.textMuted.withValues(alpha: 0.6),
                             ),
                           ),
                           const SizedBox(width: 16),
@@ -129,14 +141,14 @@ class WelcomePage extends StatelessWidget {
                             'Terms of Use',
                             style: AppTypography.bodySmall(context).copyWith(
                               decoration: TextDecoration.underline,
-                              color: AppColors.textMuted.withOpacity(0.6),
+                              color: AppColors.textMuted.withValues(alpha: 0.6),
                             ),
                           ),
                         ],
                       ),
                     ],
                   ).animate().fadeIn(delay: 1.seconds),
-                  
+
                   SizedBox(height: context.h(20)),
                 ],
               ),

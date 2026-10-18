@@ -44,7 +44,7 @@ class _LoginPageState extends State<LoginPage> {
       body: Stack(
         children: [
           // Botanical top-right accent
-          Positioned(
+          const Positioned(
             top: -40,
             right: -40,
             child: Opacity(
@@ -58,7 +58,7 @@ class _LoginPageState extends State<LoginPage> {
           ).animate().fadeIn(duration: 1.2.seconds),
 
           // Botanical bottom-left accent
-          Positioned(
+          const Positioned(
             bottom: -30,
             left: -30,
             child: Opacity(
@@ -139,44 +139,58 @@ class _LoginPageState extends State<LoginPage> {
                           crossAxisAlignment: CrossAxisAlignment.start,
                           children: [
                             Text(
-                              'Welcome Back',
-                              style: AppTypography.headingLarge(context).copyWith(
-                                fontWeight: FontWeight.w800,
-                                color: AppColors.textDark,
-                                fontSize: 26,
-                              ),
-                            ).animate().fadeIn(delay: 200.ms).slideX(begin: -0.05, end: 0),
+                                  'Welcome Back',
+                                  style: AppTypography.headingLarge(context)
+                                      .copyWith(
+                                        fontWeight: FontWeight.w800,
+                                        color: AppColors.textDark,
+                                        fontSize: 26,
+                                      ),
+                                )
+                                .animate()
+                                .fadeIn(delay: 200.ms)
+                                .slideX(begin: -0.05, end: 0),
 
                             const SizedBox(height: 6),
 
                             Text(
                               'Enter your details to access your sanctuary.',
-                              style: AppTypography.bodyMedium(context).copyWith(
-                                color: AppColors.textMuted,
-                              ),
+                              style: AppTypography.bodyMedium(
+                                context,
+                              ).copyWith(color: AppColors.textMuted),
                             ).animate().fadeIn(delay: 300.ms),
 
                             SizedBox(height: context.h(28)),
 
                             AuthTextField(
-                              label: 'Email',
-                              hint: 'alias@example.com',
-                              controller: _emailController,
-                              keyboardType: TextInputType.emailAddress,
-                              prefixIcon: Icons.mail_outline_rounded,
-                              validator: (v) => (v == null || v.isEmpty) ? 'Please enter your email' : null,
-                            ).animate().fadeIn(delay: 400.ms).slideY(begin: 0.1, end: 0),
+                                  label: 'Email',
+                                  hint: 'alias@example.com',
+                                  controller: _emailController,
+                                  keyboardType: TextInputType.emailAddress,
+                                  prefixIcon: Icons.mail_outline_rounded,
+                                  validator: (v) => (v == null || v.isEmpty)
+                                      ? 'Please enter your email'
+                                      : null,
+                                )
+                                .animate()
+                                .fadeIn(delay: 400.ms)
+                                .slideY(begin: 0.1, end: 0),
 
                             SizedBox(height: context.h(16)),
 
                             AuthTextField(
-                              label: 'Password',
-                              hint: 'Enter your password',
-                              isPassword: true,
-                              controller: _passwordController,
-                              prefixIcon: Icons.lock_outline_rounded,
-                              validator: (v) => (v == null || v.isEmpty) ? 'Please enter your password' : null,
-                            ).animate().fadeIn(delay: 500.ms).slideY(begin: 0.1, end: 0),
+                                  label: 'Password',
+                                  hint: 'Enter your password',
+                                  isPassword: true,
+                                  controller: _passwordController,
+                                  prefixIcon: Icons.lock_outline_rounded,
+                                  validator: (v) => (v == null || v.isEmpty)
+                                      ? 'Please enter your password'
+                                      : null,
+                                )
+                                .animate()
+                                .fadeIn(delay: 500.ms)
+                                .slideY(begin: 0.1, end: 0),
 
                             const SizedBox(height: 8),
 
@@ -192,10 +206,11 @@ class _LoginPageState extends State<LoginPage> {
                                 ),
                                 child: Text(
                                   'Forgot password?',
-                                  style: AppTypography.bodySmall(context).copyWith(
-                                    fontWeight: FontWeight.w700,
-                                    color: AppColors.warmSage,
-                                  ),
+                                  style: AppTypography.bodySmall(context)
+                                      .copyWith(
+                                        fontWeight: FontWeight.w700,
+                                        color: AppColors.warmSage,
+                                      ),
                                 ),
                               ),
                             ).animate().fadeIn(delay: 600.ms),
@@ -204,39 +219,45 @@ class _LoginPageState extends State<LoginPage> {
 
                             // Sign In button
                             SizedBox(
-                              width: double.infinity,
-                              height: 54,
-                              child: ElevatedButton(
-                                onPressed: _isLoading ? null : _handleLogin,
-                                style: ElevatedButton.styleFrom(
-                                  backgroundColor: AppColors.forestGreen,
-                                  foregroundColor: Colors.white,
-                                  elevation: 0,
-                                  shape: RoundedRectangleBorder(
-                                    borderRadius: BorderRadius.circular(16),
-                                  ),
-                                ),
-                                child: _isLoading
-                                    ? const SizedBox(
-                                        width: 22,
-                                        height: 22,
-                                        child: CircularProgressIndicator(
-                                          color: Colors.white,
-                                          strokeWidth: 2.5,
-                                        ),
-                                      )
-                                    : Text(
-                                        'Sign In',
-                                        style: AppTypography.bodyLarge(context).copyWith(
-                                          color: Colors.white,
-                                          fontWeight: FontWeight.w700,
-                                        ),
+                                  width: double.infinity,
+                                  height: 54,
+                                  child: ElevatedButton(
+                                    onPressed: _isLoading ? null : _handleLogin,
+                                    style: ElevatedButton.styleFrom(
+                                      backgroundColor: AppColors.forestGreen,
+                                      foregroundColor: Colors.white,
+                                      elevation: 0,
+                                      shape: RoundedRectangleBorder(
+                                        borderRadius: BorderRadius.circular(16),
                                       ),
-                              ),
-                            ).animate().fadeIn(delay: 700.ms).scale(
-                              begin: const Offset(0.96, 0.96),
-                              end: const Offset(1, 1),
-                            ),
+                                    ),
+                                    child: _isLoading
+                                        ? const SizedBox(
+                                            width: 22,
+                                            height: 22,
+                                            child: CircularProgressIndicator(
+                                              color: Colors.white,
+                                              strokeWidth: 2.5,
+                                            ),
+                                          )
+                                        : Text(
+                                            'Sign In',
+                                            style:
+                                                AppTypography.bodyLarge(
+                                                  context,
+                                                ).copyWith(
+                                                  color: Colors.white,
+                                                  fontWeight: FontWeight.w700,
+                                                ),
+                                          ),
+                                  ),
+                                )
+                                .animate()
+                                .fadeIn(delay: 700.ms)
+                                .scale(
+                                  begin: const Offset(0.96, 0.96),
+                                  end: const Offset(1, 1),
+                                ),
                           ],
                         ),
                       ),
@@ -250,9 +271,9 @@ class _LoginPageState extends State<LoginPage> {
                       children: [
                         Text(
                           'New here? ',
-                          style: AppTypography.bodyMedium(context).copyWith(
-                            color: AppColors.textMuted,
-                          ),
+                          style: AppTypography.bodyMedium(
+                            context,
+                          ).copyWith(color: AppColors.textMuted),
                         ),
                         GestureDetector(
                           onTap: () => context.push('/signup'),

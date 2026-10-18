@@ -22,10 +22,12 @@ class MaktomButton extends StatelessWidget {
       child: ElevatedButton(
         onPressed: onPressed,
         style: ElevatedButton.styleFrom(
-          backgroundColor: isSecondary ? AppColors.surfaceGreen : AppColors.forestGreen,
+          backgroundColor: isSecondary
+              ? AppColors.surfaceGreen
+              : AppColors.forestGreen,
           foregroundColor: isSecondary ? AppColors.forestGreen : Colors.white,
           elevation: isSecondary ? 0 : 2,
-          shadowColor: AppColors.forestGreen.withOpacity(0.2),
+          shadowColor: AppColors.forestGreen.withValues(alpha: 0.2),
           padding: const EdgeInsets.symmetric(vertical: 18),
         ),
         child: Text(

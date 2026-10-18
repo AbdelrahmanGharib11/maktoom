@@ -40,11 +40,10 @@ class _VoicePreviewPageState extends State<VoicePreviewPage>
   late final Animation<double> _pulseAnimation;
 
   // ── resolved therapist ────────────────────────────────────────────────────
-  TherapistModel get _therapist =>
-      kTherapists.firstWhere(
-        (t) => t.id == widget.therapistId,
-        orElse: () => kTherapists.first,
-      );
+  TherapistModel get _therapist => kTherapists.firstWhere(
+    (t) => t.id == widget.therapistId,
+    orElse: () => kTherapists.first,
+  );
 
   @override
   void initState() {
@@ -68,14 +67,14 @@ class _VoicePreviewPageState extends State<VoicePreviewPage>
   Future<void> _initAudio() async {
     try {
       // 1. Load the raw bytes from the Flutter asset bundle
-      final ByteData data =
-          await rootBundle.load(_therapist.voiceIntroAssetPath);
+      final ByteData data = await rootBundle.load(
+        _therapist.voiceIntroAssetPath,
+      );
       final Uint8List bytes = data.buffer.asUint8List();
 
       // 2. Write to a platform-accessible temp file
       final Directory dir = await getTemporaryDirectory();
-      final String fileName =
-          '${_therapist.id}_intro.mp3';
+      final String fileName = '${_therapist.id}_intro.mp3';
       final File tempFile = File('${dir.path}/$fileName');
       await tempFile.writeAsBytes(bytes, flush: true);
 
@@ -131,7 +130,7 @@ class _VoicePreviewPageState extends State<VoicePreviewPage>
     HapticFeedback.selectionClick();
     final current = await _playerController.getDuration(DurationType.current);
     final total = await _playerController.getDuration(DurationType.max);
-    if (current == null || total == null) return;
+    if (total == null) return;
     final newMs = (current + delta.inMilliseconds).clamp(0, total);
     await _playerController.seekTo(newMs);
   }
@@ -192,9 +191,11 @@ class _VoicePreviewPageState extends State<VoicePreviewPage>
                         child: Column(
                           mainAxisSize: MainAxisSize.min,
                           children: [
-                            _CardHeader(onClose: () {
-                              if (context.canPop()) context.pop();
-                            }),
+                            _CardHeader(
+                              onClose: () {
+                                if (context.canPop()) context.pop();
+                              },
+                            ),
                             const SizedBox(height: 24),
                             _TherapistAvatar(
                               pulseAnimation: _pulseAnimation,
@@ -219,16 +220,21 @@ class _VoicePreviewPageState extends State<VoicePreviewPage>
                               isPlaying: _isPlaying,
                               isReady: _isReady,
                               onToggle: _togglePlayback,
-                              onRewind: () => _seek(const Duration(seconds: -10)),
-                              onForward: () => _seek(const Duration(seconds: 10)),
+                              onRewind: () =>
+                                  _seek(const Duration(seconds: -10)),
+                              onForward: () =>
+                                  _seek(const Duration(seconds: 10)),
                             ),
 
                             const SizedBox(height: 28),
 
-                            _BookButton(onTap: () {
-                              context.push(
-                                  '/app/therapists/${widget.therapistId}/book');
-                            }),
+                            _BookButton(
+                              onTap: () {
+                                context.push(
+                                  '/app/therapists/${widget.therapistId}/book',
+                                );
+                              },
+                            ),
 
                             const SizedBox(height: 16),
                             _EncryptedBadge(),
@@ -277,8 +283,11 @@ class _CardHeader extends StatelessWidget {
               shape: BoxShape.circle,
               border: Border.all(color: Colors.white.withAlpha(60), width: 1),
             ),
-            child:
-                const Icon(Icons.close_rounded, color: Colors.white, size: 18),
+            child: const Icon(
+              Icons.close_rounded,
+              color: Colors.white,
+              size: 18,
+            ),
           ),
         ),
       ],
@@ -292,62 +301,61 @@ class _TherapistAvatar extends StatelessWidget {
   final Animation<double> pulseAnimation;
   final double size;
 
-  const _TherapistAvatar({
-    required this.pulseAnimation,
-    required this.size,
-  });
+  const _TherapistAvatar({required this.pulseAnimation, required this.size});
 
   @override
   Widget build(BuildContext context) {
     return ScaleTransition(
-      scale: pulseAnimation,
-      child: Stack(
-        alignment: Alignment.center,
-        children: [
-          // Outer glow ring
-          Container(
-            width: size + 24,
-            height: size + 24,
-            decoration: BoxDecoration(
-              shape: BoxShape.circle,
-              border: Border.all(
-                color: Colors.white.withAlpha(40),
-                width: 1.5,
+          scale: pulseAnimation,
+          child: Stack(
+            alignment: Alignment.center,
+            children: [
+              // Outer glow ring
+              Container(
+                width: size + 24,
+                height: size + 24,
+                decoration: BoxDecoration(
+                  shape: BoxShape.circle,
+                  border: Border.all(
+                    color: Colors.white.withAlpha(40),
+                    width: 1.5,
+                  ),
+                ),
               ),
-            ),
-          ),
-          // Inner ring
-          Container(
-            width: size + 8,
-            height: size + 8,
-            decoration: BoxDecoration(
-              shape: BoxShape.circle,
-              border:
-                  Border.all(color: Colors.white.withAlpha(160), width: 2),
-            ),
-          ),
-          // Avatar
-          Container(
-            width: size,
-            height: size,
-            clipBehavior: Clip.hardEdge,
-            decoration: const BoxDecoration(
-              shape: BoxShape.circle,
-              color: Color(0xFF2D6A4F),
-            ),
-            child: Image.asset(
-              'assets/images/therapist_1.png',
-              fit: BoxFit.cover,
-              errorBuilder: (_, __, ___) => const Icon(
-                Icons.person_rounded,
-                color: Colors.white70,
-                size: 56,
+              // Inner ring
+              Container(
+                width: size + 8,
+                height: size + 8,
+                decoration: BoxDecoration(
+                  shape: BoxShape.circle,
+                  border: Border.all(
+                    color: Colors.white.withAlpha(160),
+                    width: 2,
+                  ),
+                ),
               ),
-            ),
+              // Avatar
+              Container(
+                width: size,
+                height: size,
+                clipBehavior: Clip.hardEdge,
+                decoration: const BoxDecoration(
+                  shape: BoxShape.circle,
+                  color: Color(0xFF2D6A4F),
+                ),
+                child: Image.asset(
+                  'assets/images/therapist_1.png',
+                  fit: BoxFit.cover,
+                  errorBuilder: (_, __, ___) => const Icon(
+                    Icons.person_rounded,
+                    color: Colors.white70,
+                    size: 56,
+                  ),
+                ),
+              ),
+            ],
           ),
-        ],
-      ),
-    )
+        )
         .animate()
         .fadeIn(duration: 600.ms)
         .scale(
@@ -396,13 +404,11 @@ class _TherapistInfo extends StatelessWidget {
           spacing: 8,
           children: therapist.specialties.take(3).map((chip) {
             return Container(
-              padding:
-                  const EdgeInsets.symmetric(horizontal: 12, vertical: 5),
+              padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 5),
               decoration: BoxDecoration(
                 color: Colors.white.withAlpha(25),
                 borderRadius: BorderRadius.circular(20),
-                border:
-                    Border.all(color: Colors.white.withAlpha(60), width: 1),
+                border: Border.all(color: Colors.white.withAlpha(60), width: 1),
               ),
               child: Text(
                 chip,
@@ -562,9 +568,7 @@ class _PlaybackControls extends StatelessWidget {
             ),
             child: isReady
                 ? Icon(
-                    isPlaying
-                        ? Icons.pause_rounded
-                        : Icons.play_arrow_rounded,
+                    isPlaying ? Icons.pause_rounded : Icons.play_arrow_rounded,
                     color: Colors.white,
                     size: 36,
                   )
@@ -595,8 +599,11 @@ class _SkipButton extends StatelessWidget {
   final bool enabled;
   final VoidCallback onTap;
 
-  const _SkipButton(
-      {required this.icon, required this.enabled, required this.onTap});
+  const _SkipButton({
+    required this.icon,
+    required this.enabled,
+    required this.onTap,
+  });
 
   @override
   Widget build(BuildContext context) {
@@ -609,10 +616,15 @@ class _SkipButton extends StatelessWidget {
           color: Colors.white.withAlpha(enabled ? 30 : 15),
           shape: BoxShape.circle,
           border: Border.all(
-              color: Colors.white.withAlpha(enabled ? 60 : 30), width: 1),
+            color: Colors.white.withAlpha(enabled ? 60 : 30),
+            width: 1,
+          ),
         ),
-        child: Icon(icon,
-            color: enabled ? Colors.white : Colors.white38, size: 24),
+        child: Icon(
+          icon,
+          color: enabled ? Colors.white : Colors.white38,
+          size: 24,
+        ),
       ),
     );
   }
@@ -636,7 +648,8 @@ class _BookButton extends StatelessWidget {
           foregroundColor: Colors.white,
           elevation: 0,
           shape: RoundedRectangleBorder(
-              borderRadius: BorderRadius.circular(16)),
+            borderRadius: BorderRadius.circular(16),
+          ),
         ),
         child: const Text(
           'Book a Session',

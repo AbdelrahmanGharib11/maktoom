@@ -51,20 +51,23 @@ class _TherapistsPageState extends State<TherapistsPage> {
         final q = _searchQuery.toLowerCase();
         if (!t.name.toLowerCase().contains(q) &&
             !t.title.toLowerCase().contains(q) &&
-            !t.specialties.any((s) => s.toLowerCase().contains(q)))
+            !t.specialties.any((s) => s.toLowerCase().contains(q))) {
           return false;
+        }
       }
       if (_selectedSpecialty != 'All') {
         if (!t.specialties.any(
           (s) => s.toLowerCase() == _selectedSpecialty.toLowerCase(),
-        ))
+        )) {
           return false;
+        }
       }
       if (_selectedLanguage != null) {
         if (!t.languages.any(
           (l) => l.toLowerCase() == _selectedLanguage!.toLowerCase(),
-        ))
+        )) {
           return false;
+        }
       }
       if (_selectedPriceRange != null) {
         switch (_selectedPriceRange) {
@@ -78,11 +81,13 @@ class _TherapistsPageState extends State<TherapistsPage> {
       }
       if (_selectedAvailability != null) {
         if (_selectedAvailability == 'Today' &&
-            t.availability != AvailabilityStatus.availableToday)
+            t.availability != AvailabilityStatus.availableToday) {
           return false;
+        }
         if (_selectedAvailability == 'Tomorrow' &&
-            t.availability != AvailabilityStatus.availableTomorrow)
+            t.availability != AvailabilityStatus.availableTomorrow) {
           return false;
+        }
       }
       if (_minRating != null && t.rating < _minRating!) return false;
       return true;
@@ -225,15 +230,15 @@ class _TherapistsPageState extends State<TherapistsPage> {
             color: AppColors.surfaceGreen,
             borderRadius: BorderRadius.circular(20),
           ),
-          child: Row(
+          child: const Row(
             mainAxisSize: MainAxisSize.min,
             children: [
-              const Icon(
+              Icon(
                 Icons.verified_rounded,
                 size: 12,
                 color: AppColors.forestGreen,
               ),
-              const SizedBox(width: 5),
+              SizedBox(width: 5),
               Text(
                 'VERIFIED EXPERTS',
                 style: TextStyle(
@@ -446,7 +451,7 @@ class _FilterBarState extends State<_FilterBar> {
       backgroundColor: Colors.transparent,
       builder: (_) => _PickerSheet(
         title: 'Price Range',
-        options: ['Any Price', ..._priceRanges],
+        options: const ['Any Price', ..._priceRanges],
         selected: widget.selectedPriceRange ?? 'Any Price',
         onSelected: (v) {
           widget.onPriceChanged(v == 'Any Price' ? null : v);
@@ -576,7 +581,7 @@ class _FilterBarState extends State<_FilterBar> {
                 // Rating chips
                 ..._ratingOptions.map(
                   (r) => _chip(
-                    label: '${r}+ ★',
+                    label: '$r+ ★',
                     isActive: widget.minRating == r,
                     icon: Icons.star_rounded,
                     onTap: () => widget.onRatingChanged(
@@ -776,7 +781,7 @@ class _PickerSheet extends StatelessWidget {
                                     ? Container(
                                         key: const ValueKey('check'),
                                         padding: const EdgeInsets.all(4),
-                                        decoration: BoxDecoration(
+                                        decoration: const BoxDecoration(
                                           color: AppColors.forestGreen,
                                           shape: BoxShape.circle,
                                         ),
@@ -992,7 +997,7 @@ class _EmptyState extends StatelessWidget {
         children: [
           Container(
             padding: const EdgeInsets.all(20),
-            decoration: BoxDecoration(
+            decoration: const BoxDecoration(
               color: AppColors.surfaceGreen,
               shape: BoxShape.circle,
             ),

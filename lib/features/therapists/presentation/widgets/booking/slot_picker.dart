@@ -23,9 +23,14 @@ class _SlotPickerState extends State<SlotPicker> {
   ];
 
   final List<String> _times = [
-    '09:00 AM', '10:30 AM', '11:00 AM',
-    '01:30 PM', '03:00 PM', '04:30 PM',
-    '06:00 PM', '07:30 PM',
+    '09:00 AM',
+    '10:30 AM',
+    '11:00 AM',
+    '01:30 PM',
+    '03:00 PM',
+    '04:30 PM',
+    '06:00 PM',
+    '07:30 PM',
   ];
 
   @override
@@ -47,17 +52,27 @@ class _SlotPickerState extends State<SlotPicker> {
               children: [
                 Text(
                   'October 2024',
-                  style: AppTypography.bodySmall(context).copyWith(color: AppColors.textMuted),
+                  style: AppTypography.bodySmall(
+                    context,
+                  ).copyWith(color: AppColors.textMuted),
                 ),
                 const SizedBox(width: 8),
-                const Icon(Icons.chevron_left_rounded, size: 20, color: AppColors.textMuted),
-                const Icon(Icons.chevron_right_rounded, size: 20, color: AppColors.textMuted),
+                const Icon(
+                  Icons.chevron_left_rounded,
+                  size: 20,
+                  color: AppColors.textMuted,
+                ),
+                const Icon(
+                  Icons.chevron_right_rounded,
+                  size: 20,
+                  color: AppColors.textMuted,
+                ),
               ],
             ),
           ],
         ),
         SizedBox(height: context.h(16)),
-        
+
         // Date Stripe
         SingleChildScrollView(
           scrollDirection: Axis.horizontal,
@@ -69,12 +84,19 @@ class _SlotPickerState extends State<SlotPicker> {
                 child: AnimatedContainer(
                   duration: const Duration(milliseconds: 200),
                   margin: EdgeInsets.only(right: context.w(12)),
-                  padding: EdgeInsets.symmetric(horizontal: context.w(16), vertical: context.h(12)),
+                  padding: EdgeInsets.symmetric(
+                    horizontal: context.w(16),
+                    vertical: context.h(12),
+                  ),
                   decoration: BoxDecoration(
-                    color: isSelected ? AppColors.surfaceGreen : Colors.white.withOpacity(0.5),
+                    color: isSelected
+                        ? AppColors.surfaceGreen
+                        : Colors.white.withValues(alpha: 0.5),
                     borderRadius: BorderRadius.circular(12),
                     border: Border.all(
-                      color: isSelected ? AppColors.forestGreen : AppColors.forestGreen.withOpacity(0.05),
+                      color: isSelected
+                          ? AppColors.forestGreen
+                          : AppColors.forestGreen.withValues(alpha: 0.05),
                     ),
                   ),
                   child: Column(
@@ -82,7 +104,9 @@ class _SlotPickerState extends State<SlotPicker> {
                       Text(
                         _dates[index]['day']!,
                         style: AppTypography.bodySmall(context).copyWith(
-                          color: isSelected ? AppColors.forestGreen : AppColors.textMuted,
+                          color: isSelected
+                              ? AppColors.forestGreen
+                              : AppColors.textMuted,
                         ),
                       ),
                       Text(
@@ -99,9 +123,9 @@ class _SlotPickerState extends State<SlotPicker> {
             }),
           ),
         ),
-        
+
         SizedBox(height: context.h(24)),
-        
+
         // Time Grid
         GridView.builder(
           shrinkWrap: true,
@@ -121,17 +145,23 @@ class _SlotPickerState extends State<SlotPicker> {
                 duration: const Duration(milliseconds: 200),
                 alignment: Alignment.center,
                 decoration: BoxDecoration(
-                  color: isSelected ? AppColors.forestGreen : Colors.white.withOpacity(0.5),
+                  color: isSelected
+                      ? AppColors.forestGreen
+                      : Colors.white.withValues(alpha: 0.5),
                   borderRadius: BorderRadius.circular(8),
                   border: Border.all(
-                    color: isSelected ? AppColors.forestGreen : AppColors.forestGreen.withOpacity(0.05),
+                    color: isSelected
+                        ? AppColors.forestGreen
+                        : AppColors.forestGreen.withValues(alpha: 0.05),
                   ),
                 ),
                 child: Text(
                   _times[index],
                   style: AppTypography.bodySmall(context).copyWith(
                     color: isSelected ? Colors.white : AppColors.forestGreen,
-                    fontWeight: isSelected ? FontWeight.bold : FontWeight.normal,
+                    fontWeight: isSelected
+                        ? FontWeight.bold
+                        : FontWeight.normal,
                   ),
                 ),
               ),

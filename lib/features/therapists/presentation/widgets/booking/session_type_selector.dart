@@ -23,7 +23,7 @@ class _SessionTypeSelectorState extends State<SessionTypeSelector> {
   Widget build(BuildContext context) {
     return Container(
       decoration: BoxDecoration(
-        color: AppColors.surfaceGreen.withOpacity(0.3),
+        color: AppColors.surfaceGreen.withValues(alpha: 0.3),
         borderRadius: BorderRadius.circular(16),
       ),
       padding: const EdgeInsets.all(4),
@@ -37,7 +37,9 @@ class _SessionTypeSelectorState extends State<SessionTypeSelector> {
                 duration: const Duration(milliseconds: 200),
                 padding: EdgeInsets.symmetric(vertical: context.h(12)),
                 decoration: BoxDecoration(
-                  color: isSelected ? AppColors.forestGreen : Colors.transparent,
+                  color: isSelected
+                      ? AppColors.forestGreen
+                      : Colors.transparent,
                   borderRadius: BorderRadius.circular(12),
                 ),
                 child: Row(
@@ -53,7 +55,9 @@ class _SessionTypeSelectorState extends State<SessionTypeSelector> {
                       _types[index]['label'],
                       style: AppTypography.bodyMedium(context).copyWith(
                         color: isSelected ? Colors.white : AppColors.textMuted,
-                        fontWeight: isSelected ? FontWeight.bold : FontWeight.normal,
+                        fontWeight: isSelected
+                            ? FontWeight.bold
+                            : FontWeight.normal,
                       ),
                     ),
                   ],

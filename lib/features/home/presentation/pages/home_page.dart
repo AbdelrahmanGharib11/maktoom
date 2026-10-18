@@ -22,7 +22,10 @@ class HomePage extends StatelessWidget {
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               // Header
-              const GreetingHeader().animate().fadeIn().slideX(begin: -0.1, end: 0),
+              const GreetingHeader().animate().fadeIn().slideX(
+                begin: -0.1,
+                end: 0,
+              ),
 
               const SizedBox(height: 32),
 
@@ -53,7 +56,7 @@ class HomePage extends StatelessWidget {
                   borderRadius: BorderRadius.circular(24),
                   boxShadow: [
                     BoxShadow(
-                      color: AppColors.forestGreen.withOpacity(0.3),
+                      color: AppColors.forestGreen.withValues(alpha: 0.3),
                       blurRadius: 15,
                       offset: const Offset(0, 8),
                     ),
@@ -66,9 +69,12 @@ class HomePage extends StatelessWidget {
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
                           Container(
-                            padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 4),
+                            padding: const EdgeInsets.symmetric(
+                              horizontal: 8,
+                              vertical: 4,
+                            ),
                             decoration: BoxDecoration(
-                              color: AppColors.mutedGold.withOpacity(0.2),
+                              color: AppColors.mutedGold.withValues(alpha: 0.2),
                               borderRadius: BorderRadius.circular(8),
                             ),
                             child: Text(
@@ -83,12 +89,16 @@ class HomePage extends StatelessWidget {
                           const SizedBox(height: 8),
                           Text(
                             'Need a 5-min gut-check?',
-                            style: AppTypography.headingSmall(context).copyWith(color: Colors.white),
+                            style: AppTypography.headingSmall(
+                              context,
+                            ).copyWith(color: Colors.white),
                           ),
                           const SizedBox(height: 4),
                           Text(
                             'Connect with a therapist instantly for a rapid session.',
-                            style: AppTypography.bodySmall(context).copyWith(color: Colors.white.withOpacity(0.7)),
+                            style: AppTypography.bodySmall(context).copyWith(
+                              color: Colors.white.withValues(alpha: 0.7),
+                            ),
                           ),
                         ],
                       ),
@@ -99,11 +109,22 @@ class HomePage extends StatelessWidget {
                       style: ElevatedButton.styleFrom(
                         backgroundColor: AppColors.mutedGold,
                         foregroundColor: AppColors.forestGreen,
-                        minimumSize: const Size(0, 48), // Override global infinite width
-                        shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(12)),
-                        padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 12),
+                        minimumSize: const Size(
+                          0,
+                          48,
+                        ), // Override global infinite width
+                        shape: RoundedRectangleBorder(
+                          borderRadius: BorderRadius.circular(12),
+                        ),
+                        padding: const EdgeInsets.symmetric(
+                          horizontal: 16,
+                          vertical: 12,
+                        ),
                       ),
-                      child: const Text('Start Now', style: TextStyle(fontWeight: FontWeight.bold)),
+                      child: const Text(
+                        'Start Now',
+                        style: TextStyle(fontWeight: FontWeight.bold),
+                      ),
                     ),
                   ],
                 ),
@@ -128,20 +149,23 @@ class HomePage extends StatelessWidget {
                     onPressed: () {},
                     child: Text(
                       context.l10n.seeAll,
-                      style: AppTypography.bodyMedium(context).copyWith(color: AppColors.warmSage),
+                      style: AppTypography.bodyMedium(
+                        context,
+                      ).copyWith(color: AppColors.warmSage),
                     ),
                   ),
                 ],
               ),
               const SizedBox(height: 12),
-              
+
               // Horizontal Therapist List Placeholder
               SizedBox(
                 height: 180,
                 child: ListView.separated(
                   scrollDirection: Axis.horizontal,
                   itemCount: 5,
-                  separatorBuilder: (context, index) => const SizedBox(width: 16),
+                  separatorBuilder: (context, index) =>
+                      const SizedBox(width: 16),
                   itemBuilder: (context, index) {
                     return Container(
                       width: 140,
@@ -151,7 +175,7 @@ class HomePage extends StatelessWidget {
                         borderRadius: BorderRadius.circular(20),
                         boxShadow: [
                           BoxShadow(
-                            color: Colors.black.withOpacity(0.03),
+                            color: Colors.black.withValues(alpha: 0.03),
                             blurRadius: 10,
                           ),
                         ],
@@ -162,12 +186,18 @@ class HomePage extends StatelessWidget {
                           const CircleAvatar(
                             radius: 30,
                             backgroundColor: AppColors.surfaceGreen,
-                            child: Icon(Icons.psychology, color: AppColors.forestGreen, size: 30),
+                            child: Icon(
+                              Icons.psychology,
+                              color: AppColors.forestGreen,
+                              size: 30,
+                            ),
                           ),
                           const SizedBox(height: 12),
                           Text(
                             'Dr. Amina',
-                            style: AppTypography.bodyLarge(context).copyWith(fontWeight: FontWeight.bold),
+                            style: AppTypography.bodyLarge(
+                              context,
+                            ).copyWith(fontWeight: FontWeight.bold),
                           ),
                           Text(
                             'Family Expert',
@@ -183,7 +213,6 @@ class HomePage extends StatelessWidget {
           ),
         ),
       ),
-
     );
   }
 }

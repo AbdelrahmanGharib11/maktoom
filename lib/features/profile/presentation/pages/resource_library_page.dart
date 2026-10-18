@@ -52,7 +52,7 @@ class ResourceLibraryPage extends StatelessWidget {
                         vertical: 4,
                       ),
                       decoration: BoxDecoration(
-                        color: AppColors.surfaceGreen.withOpacity(0.3),
+                        color: AppColors.surfaceGreen.withValues(alpha: 0.3),
                         borderRadius: BorderRadius.circular(10),
                       ),
                       child: Row(
@@ -187,7 +187,7 @@ class ResourceLibraryPage extends StatelessWidget {
         border: Border.all(
           color: isSelected
               ? AppColors.forestGreen
-              : AppColors.forestGreen.withOpacity(0.1),
+              : AppColors.forestGreen.withValues(alpha: 0.1),
         ),
       ),
       child: Text(
@@ -217,7 +217,7 @@ class ResourceLibraryPage extends StatelessWidget {
         borderRadius: BorderRadius.circular(20),
         boxShadow: [
           BoxShadow(
-            color: Colors.black.withOpacity(0.02),
+            color: Colors.black.withValues(alpha: 0.02),
             blurRadius: 10,
             offset: const Offset(0, 4),
           ),
@@ -238,7 +238,7 @@ class ResourceLibraryPage extends StatelessWidget {
                 fit: BoxFit.cover,
                 errorBuilder: (context, error, stackTrace) => Container(
                   height: context.h(140),
-                  color: AppColors.surfaceGreen.withOpacity(0.2),
+                  color: AppColors.surfaceGreen.withValues(alpha: 0.2),
                   child: const Icon(
                     Icons.image_outlined,
                     color: AppColors.forestGreen,
