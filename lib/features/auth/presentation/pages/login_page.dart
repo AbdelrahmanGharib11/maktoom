@@ -140,12 +140,15 @@ class _LoginPageState extends State<LoginPage> {
                           children: [
                             Text(
                               'Welcome Back',
-                              style: AppTypography.headingLarge(context).copyWith(
+                              style: AppTypography
+                                  .headingLarge(context)
+                                  .copyWith(
                                 fontWeight: FontWeight.w800,
                                 color: AppColors.textDark,
                                 fontSize: 26,
                               ),
-                            ).animate().fadeIn(delay: 200.ms).slideX(begin: -0.05, end: 0),
+                            ).animate().fadeIn(delay: 200.ms).slideX(
+                                begin: -0.05, end: 0),
 
                             const SizedBox(height: 6),
 
@@ -164,8 +167,12 @@ class _LoginPageState extends State<LoginPage> {
                               controller: _emailController,
                               keyboardType: TextInputType.emailAddress,
                               prefixIcon: Icons.mail_outline_rounded,
-                              validator: (v) => (v == null || v.isEmpty) ? 'Please enter your email' : null,
-                            ).animate().fadeIn(delay: 400.ms).slideY(begin: 0.1, end: 0),
+                              validator: (v) =>
+                              (v == null || v.isEmpty)
+                                  ? 'Please enter your email'
+                                  : null,
+                            ).animate().fadeIn(delay: 400.ms).slideY(
+                                begin: 0.1, end: 0),
 
                             SizedBox(height: context.h(16)),
 
@@ -175,8 +182,12 @@ class _LoginPageState extends State<LoginPage> {
                               isPassword: true,
                               controller: _passwordController,
                               prefixIcon: Icons.lock_outline_rounded,
-                              validator: (v) => (v == null || v.isEmpty) ? 'Please enter your password' : null,
-                            ).animate().fadeIn(delay: 500.ms).slideY(begin: 0.1, end: 0),
+                              validator: (v) =>
+                              (v == null || v.isEmpty)
+                                  ? 'Please enter your password'
+                                  : null,
+                            ).animate().fadeIn(delay: 500.ms).slideY(
+                                begin: 0.1, end: 0),
 
                             const SizedBox(height: 8),
 
@@ -192,7 +203,9 @@ class _LoginPageState extends State<LoginPage> {
                                 ),
                                 child: Text(
                                   'Forgot password?',
-                                  style: AppTypography.bodySmall(context).copyWith(
+                                  style: AppTypography
+                                      .bodySmall(context)
+                                      .copyWith(
                                     fontWeight: FontWeight.w700,
                                     color: AppColors.warmSage,
                                   ),
@@ -218,20 +231,22 @@ class _LoginPageState extends State<LoginPage> {
                                 ),
                                 child: _isLoading
                                     ? const SizedBox(
-                                        width: 22,
-                                        height: 22,
-                                        child: CircularProgressIndicator(
-                                          color: Colors.white,
-                                          strokeWidth: 2.5,
-                                        ),
-                                      )
+                                  width: 22,
+                                  height: 22,
+                                  child: CircularProgressIndicator(
+                                    color: Colors.white,
+                                    strokeWidth: 2.5,
+                                  ),
+                                )
                                     : Text(
-                                        'Sign In',
-                                        style: AppTypography.bodyLarge(context).copyWith(
-                                          color: Colors.white,
-                                          fontWeight: FontWeight.w700,
-                                        ),
-                                      ),
+                                  'Sign In',
+                                  style: AppTypography
+                                      .bodyLarge(context)
+                                      .copyWith(
+                                    color: Colors.white,
+                                    fontWeight: FontWeight.w700,
+                                  ),
+                                ),
                               ),
                             ).animate().fadeIn(delay: 700.ms).scale(
                               begin: const Offset(0.96, 0.96),
@@ -240,7 +255,8 @@ class _LoginPageState extends State<LoginPage> {
                           ],
                         ),
                       ),
-                    ).animate().fadeIn(delay: 150.ms).slideY(begin: 0.1, end: 0),
+                    ).animate().fadeIn(delay: 150.ms).slideY(
+                        begin: 0.1, end: 0),
 
                     SizedBox(height: context.h(24)),
 

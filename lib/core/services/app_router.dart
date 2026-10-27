@@ -29,6 +29,7 @@ class AppRouter {
   static const bool _isAuthGuardEnabled = false;
 
   static bool get _isAuthenticated => true;
+
   static bool get _isEmailVerified => true;
 
   static final router = GoRouter(
@@ -57,7 +58,8 @@ class AppRouter {
       ),
       GoRoute(
         path: '/verify-email',
-        builder: (context, state) => const _PlaceholderPage(
+        builder: (context, state) =>
+        const _PlaceholderPage(
           title: 'Email Verification',
           route: '/verify-email',
         ),
@@ -92,35 +94,40 @@ class AppRouter {
                 routes: [
                   GoRoute(
                     path: 'check-in',
-                    builder: (context, state) => const _PlaceholderPage(
+                    builder: (context, state) =>
+                    const _PlaceholderPage(
                       title: 'Quick Check-In',
                       route: '/app/home/check-in',
                     ),
                   ),
                   GoRoute(
                     path: 'session-prep',
-                    builder: (context, state) => const _PlaceholderPage(
+                    builder: (context, state) =>
+                    const _PlaceholderPage(
                       title: 'Session Prep Card',
                       route: '/app/home/session-prep',
                     ),
                   ),
                   GoRoute(
                     path: 'intake/entry',
-                    builder: (context, state) => const _PlaceholderPage(
+                    builder: (context, state) =>
+                    const _PlaceholderPage(
                       title: 'AI Intake - Entry Prompt',
                       route: '/app/home/intake/entry',
                     ),
                   ),
                   GoRoute(
                     path: 'intake/chat',
-                    builder: (context, state) => const _PlaceholderPage(
+                    builder: (context, state) =>
+                    const _PlaceholderPage(
                       title: 'AI Intake - Chat',
                       route: '/app/home/intake/chat',
                     ),
                   ),
                   GoRoute(
                     path: 'intake/summary',
-                    builder: (context, state) => const _PlaceholderPage(
+                    builder: (context, state) =>
+                    const _PlaceholderPage(
                       title: 'AI Intake - Summary',
                       route: '/app/home/intake/summary',
                     ),
@@ -153,14 +160,16 @@ class AppRouter {
                   ),
                   GoRoute(
                     path: 'gift',
-                    builder: (context, state) => const _PlaceholderPage(
+                    builder: (context, state) =>
+                    const _PlaceholderPage(
                       title: 'Gift a Session',
                       route: '/app/therapists/gift',
                     ),
                     routes: [
                       GoRoute(
                         path: 'share',
-                        builder: (context, state) => const _PlaceholderPage(
+                        builder: (context, state) =>
+                        const _PlaceholderPage(
                           title: 'Gift Link Share',
                           route: '/app/therapists/gift/share',
                         ),
@@ -202,7 +211,8 @@ class AppRouter {
                   GoRoute(
                     path: ':therapistId',
                     builder: (context, state) {
-                      final therapistId = state.pathParameters['therapistId'] ?? '';
+                      final therapistId = state.pathParameters['therapistId'] ??
+                          '';
                       return TherapistProfilePage(therapistId: therapistId);
                     },
                     routes: [
@@ -243,14 +253,16 @@ class AppRouter {
                 routes: [
                   GoRoute(
                     path: 'new',
-                    builder: (context, state) => const _PlaceholderPage(
+                    builder: (context, state) =>
+                    const _PlaceholderPage(
                       title: 'New Journal Entry',
                       route: '/app/journal/new',
                     ),
                   ),
                   GoRoute(
                     path: 'insights',
-                    builder: (context, state) => const _PlaceholderPage(
+                    builder: (context, state) =>
+                    const _PlaceholderPage(
                       title: 'Mood Trend Insights',
                       route: '/app/journal/insights',
                     ),
@@ -314,14 +326,16 @@ class AppRouter {
                   ),
                   GoRoute(
                     path: 'gift',
-                    builder: (context, state) => const _PlaceholderPage(
+                    builder: (context, state) =>
+                    const _PlaceholderPage(
                       title: 'Gift a Session',
                       route: '/app/profile/gift',
                     ),
                     routes: [
                       GoRoute(
                         path: 'share',
-                        builder: (context, state) => const _PlaceholderPage(
+                        builder: (context, state) =>
+                        const _PlaceholderPage(
                           title: 'Gift Link Share',
                           route: '/app/profile/gift/share',
                         ),
@@ -330,14 +344,16 @@ class AppRouter {
                   ),
                   GoRoute(
                     path: 'success-story',
-                    builder: (context, state) => const _PlaceholderPage(
+                    builder: (context, state) =>
+                    const _PlaceholderPage(
                       title: 'Submit Success Story',
                       route: '/app/profile/success-story',
                     ),
                   ),
                   GoRoute(
                     path: 'audio-upload',
-                    builder: (context, state) => const _PlaceholderPage(
+                    builder: (context, state) =>
+                    const _PlaceholderPage(
                       title: 'Therapist Audio Upload',
                       route: '/app/profile/audio-upload',
                     ),
